@@ -1,6 +1,12 @@
 <?php require "../req_login.php"; ?>
 
 
+<?php
+//    $number = $_POST['number'];
+//    echo $number;
+//?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -177,6 +183,11 @@
     </div>
     <br/>
     <br/>
+
+    <div id="block_num">
+
+    </div>
+
     <div class="row">
         <div class="col-md-12 table-responsive">
             <table id="responsive-table" class="table table-bordered table-condensed">

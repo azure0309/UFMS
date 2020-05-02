@@ -9,12 +9,18 @@ var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 
 $(document).on('click','.actionbutton', function(){
+    //
+
+
+
+    //
+    // alert("hghgghgh");
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
         if($(this).find('td:eq(0)').text() == beanId){
             // alert("Equals");
-            if(clickedButton.text() == 'Action'){
+            if(clickedButton.text() == 'Block'){
                 console.log("I am not sorry for you");
                 if($(this).find("td:eq(2)").text() == "MAJOR"){
                     $(this).removeClass("warning-fraud");
@@ -27,6 +33,7 @@ $(document).on('click','.actionbutton', function(){
                         async: false,
                         success: function(data) {
                             alert("changed");
+                            alert(data.id)
                         },
                         cache: false
                     }); 
@@ -112,16 +119,39 @@ $(document).on('click','.actionbutton', function(){
             }
         }
     });
-    if(clickedButton.text() == 'Action'){
+    if(clickedButton.text() == 'Block'){
         clickedButton.removeClass("btn btn-info");
         clickedButton.addClass("btn btn-warning");
         clickedButton.text('Reverse');
+        // url = "index.php";
+        // substr = test[6].substring(1);
+        // window.location = url;
+        // $.ajax({
+        //     url: url,
+        //     type: "GET",
+        //     data: {number:substr},
+        //     dataType: "json",
+        //     async: false,
+        //     success: function(data) {
+        //         $('#block_num').html(response);
+        //     },
+        //     cache: false
+        // });
+        // alert(substr)
     }
     else if(clickedButton.text() == 'Reverse'){
         clickedButton.removeClass("btn btn-warning");
         clickedButton.addClass("btn btn-info");
-        clickedButton.text('Action');
+        clickedButton.text('Block');
     }
+
+    // $(document).ready(function(){
+    //     $('#block_button').click(function () {
+    //
+    //     });
+    //     return false;
+    // });
+
 });
 $(document).ready(function(){
     getTrunkNames();
@@ -204,7 +234,7 @@ function getData(){
                 }
                 // console.log(data[i]["STATUS"]);
                 if(data[i]["STATUS"] == 0){
-
+                    var value = '';
                     if(data[i]["LVL"] == 1){ // LEVEL 1 baival LEVEL 2 toi adilhan haragdana
                         var row = $("<tr class='danger-minor' />")
                     }
@@ -223,22 +253,24 @@ function getData(){
                     else if(data[i]["LVL"] == 2)
                     {
                         row.append("<td>MAJOR</td>");
-                    } 
+                    }
                     else if(data[i]["LVL"] == 3)
                     {
                         row.append("<td>CRITICAL</td>");
-                    } 
+                    }
 
-                    
+
                     for(var p = 0; p < argArray.length; p++){
                         if(ipArray[p] == "empty"){
                             if(data[i][argArray[p]] === null){
-                                row.append("<td>------</td>");    
+                                row.append("<td>------</td>");
                             }else{
                                 row.append("<td>" + data[i][argArray[p]] + "</td>");
                             }
                         }else{
+                            document.write(argArray[p]);
                             row.append("<td><table><tr><td><a title='" + countryNameArray[p] + "'><div class='flag flag-" + countryCodeArray[p] + "'></div></a><td/><td> " + data[i][argArray[p]] + "<td/></tr></table></td>");
+                            value.append()
                         }
                     }
                     if(data[i]["CONTENT"] === null){
@@ -247,18 +279,22 @@ function getData(){
                         row.append("<td>" + data[i]["CONTENT"] + "</td>");
                     }
                     row.append("<td>" + data[i]["CREATED"] + "</td>");
-                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>Action</button></td>");
+                    row.append("<td>" +
+                        "<button class='actionbutton form-control btn btn-info' id='block_button' data-bean-id='"+data[i]["ALERT_ID"]+"'>Block</button>" +
+                        "</td>");
+
                     // row.append("<td><button class='btn btn-sample form-control' id='"+data[i]["ALERT_ID"]+"'>")
                     $("#table-body").append(row);
                     audio.play();
-                }else{
+                }
+                else{
                     if(data[i]["LVL"]==1)
                     {
                          var row = $("<tr class='danger-cleared-minor' />")
                     }
                     if(data[i]["LVL"] == 2){
                         var row = $("<tr class='not-fraud' />")
-                        
+
                     }else if(data[i]["LVL"] == 3){
                         var row = $("<tr class='danger-cleared-fraud' />")
                         // alert("LVL 3");
@@ -272,15 +308,15 @@ function getData(){
                     else if(data[i]["LVL"] == 2)
                     {
                         row.append("<td>MAJOR</td>");
-                    } 
+                    }
                     else if(data[i]["LVL"] == 3)
                     {
                         row.append("<td>CRITICAL</td>");
-                    } 
+                    }
                     for(var p = 0; p < argArray.length; p++){
                         if(ipArray[p] == "empty"){
                             if(data[i][argArray[p]] === null){
-                                row.append("<td>------</td>");    
+                                row.append("<td>------</td>");
                             }else{
                                 row.append("<td>" + data[i][argArray[p]] + "</td>");
                             }
