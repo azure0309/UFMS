@@ -133,22 +133,34 @@ $(document).on('click','.actionbutton', function(){
         call_to = targetRow[6].substring(1);
         console.log("SUB: " + call_to);
 
+
         $.ajax({
-            url: 'https://ufms.uni/Test/controller/index_page/block_action.php',
-            type: "POST",
-            data: { v_number : call_to},
-            dataType: "text",
-            async: false,
-            success: function(data) {
-                alert("changed");
-            },
-            //     error: function (xhr, ajaxOptions, thrownError) {
-            //         alert(xhr.status);
-            //         alert(ajaxOptions);
-            //         alert(thrownError);
-            //     }
-            cache: false
+            url: "https://ufms.uni/Test/index.php&f=hello",
+            type: "GET",
+            success: function(data){
+                //Do something here with the "data"
+                alert("success!!!");
+            }
         });
+
+
+
+        // $.ajax({
+        //     url: 'https://ufms.uni/Test/controller/index_page/block_action.php',
+        //     type: "POST",
+        //     data: { v_number : call_to},
+        //     dataType: "text",
+        //     async: false,
+        //     success: function(data) {
+        //         alert("changed");
+        //     },
+        //     //     error: function (xhr, ajaxOptions, thrownError) {
+        //     //         alert(xhr.status);
+        //     //         alert(ajaxOptions);
+        //     //         alert(thrownError);
+        //     //     }
+        //     cache: false
+        // });
 
 
         // $.ajax({
@@ -172,37 +184,6 @@ $(document).on('click','.actionbutton', function(){
         // });
 
 
-        // $.ajax({
-        //     url: "controller/index_page/block_action",
-        //     data: {
-        //         number : "The name",
-        //     }
-        // })
-        // .done  (function(data, textStatus, jqXHR)
-        // {
-        //     alert("Success: " + response) ;
-        // });
-            // .fail(function(jqXHR, textStatus, errorThrown) {
-            //     alert("Error")   ;
-            // })
-            // .always(function(jqXHROrData, textStatus, jqXHROrErrorThrown)
-            // {
-            //     alert("complete");
-            // })
-
-
-        // $.ajax({
-        //     url: 'controller/index_page/block_action',
-        //     type: "POST",
-        //     data: { number : 5},
-        //     dataType: "json",
-        //     success: function(data) {
-        //         alert("changed");
-        //     },
-        //     fail: function(xhr, textStatus, errorThrown){
-        //         alert('request failed');
-        //     }
-        // });
 
         // clickedButton.removeClass("btn btn-info");
         // clickedButton.addClass("btn btn-warning");
