@@ -134,15 +134,28 @@ $(document).on('click','.actionbutton', function(){
         console.log("SUB: " + call_to);
 
         $.ajax({
-            url: "controller/index_page/block_action",
-            data: {
-                number : "The name",
+            url: 'controller/index_page/block_action',
+            type: "POST",
+            data: { number : 5},
+            dataType: "json",
+            done: function(data) {
+                alert("changed");
+            },
+            fail: function(xhr, textStatus, errorThrown){
+                alert('request failed');
             }
-        })
-        .done  (function(data, textStatus, jqXHR)
-        {
-            alert("Success: " + response) ;
         });
+
+        // $.ajax({
+        //     url: "controller/index_page/block_action",
+        //     data: {
+        //         number : "The name",
+        //     }
+        // })
+        // .done  (function(data, textStatus, jqXHR)
+        // {
+        //     alert("Success: " + response) ;
+        // });
             // .fail(function(jqXHR, textStatus, errorThrown) {
             //     alert("Error")   ;
             // })
