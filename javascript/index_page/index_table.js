@@ -133,9 +133,11 @@ $(document).on('click','.actionbutton', function(){
         call_to = targetRow[6].substring(1);
         console.log("SUB: " + call_to);
 
+        alert("rkoehfqioerghpwioqreug");
+
         $.ajax({
-            // url: "index.php",
-            url: 'controller/index_page/block_action.php',
+            url: "index.php",
+            // url: 'controller/index_page/block_action.php',
             type: "POST",
             data: {number: call_to},
             dataType: "json",
