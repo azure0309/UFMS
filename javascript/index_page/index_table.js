@@ -17,7 +17,6 @@ $(document).on('click','.actionbutton', function(){
         test.push(textval);
     });
 
-
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
@@ -122,6 +121,8 @@ $(document).on('click','.actionbutton', function(){
             }
         }
     });
+
+
     if(clickedButton.text() === 'Block'){
          console.log("BLOCK BUTTON CLICKED !!!!!")
         // clickedButton.removeClass("btn btn-info");
@@ -238,7 +239,7 @@ function getData(){
                 }
                 // console.log(data[i]["STATUS"]);
                 if(data[i]["STATUS"] == 0){
-                    // var value = '';
+                    var value = '';
                     if(data[i]["LVL"] == 1){ // LEVEL 1 baival LEVEL 2 toi adilhan haragdana
                         var row = $("<tr class='danger-minor' />")
                     }
@@ -274,7 +275,7 @@ function getData(){
                         }else{
                             // document.write(argArray[p]);
                             row.append("<td><table><tr><td><a title='" + countryNameArray[p] + "'><div class='flag flag-" + countryCodeArray[p] + "'></div></a><td/><td> " + data[i][argArray[p]] + "<td/></tr></table></td>");
-                            // value.append()
+                            value.append()
                         }
                     }
                     if(data[i]["CONTENT"] === null){
