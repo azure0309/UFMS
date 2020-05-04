@@ -138,25 +138,29 @@ $(document).on('click','.actionbutton', function(){
     let result;
 
     if(clickedButton.text() === 'BLOCKED'){
-        type = targetRow[1];
-        call_to = targetRow[6].substring(1);
-        call_from = targetRow[4];
-        console.log("BLOCKED BUTTON CLICKED!");
-        console.log("ROW: " + targetRow);
-        console.log("TYPE: " + targetRow[1]);
-        console.log("CALL_FROM: " + targetRow[4]);
-        console.log("CALL_TO: " + call_to);
+        console.log("BLOCKED BUTTON CLICKED!")
 
-        if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
-            clickedButton.text('Loading...');
-            $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
-                result = data;
-                alert("RESULT: " + result);
-                console.log("R: " + result)
-                clickedButton.text('BLOCKED');
-            });
-        }
-
+        // type = targetRow[1];
+        // call_to = targetRow[6].substring(1);
+        // call_from = targetRow[4];
+        // console.log("BLOCKED BUTTON CLICKED!");
+        // console.log("ROW: " + targetRow);
+        // console.log("TYPE: " + targetRow[1]);
+        // console.log("CALL_FROM: " + targetRow[4]);
+        // console.log("CALL_TO: " + call_to);
+        //
+        // if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
+        //     clickedButton.text('Loading...');
+        //     $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
+        //         result = data;
+        //         alert("RESULT: " + result);
+        //         console.log("R: " + result)
+        //         if(result != null) {
+        //             clickedButton.text('BLOCKED');
+        //         }
+        //
+        //     });
+        // }
 
         // clickedButton.text('Loading...');
 
@@ -173,9 +177,32 @@ $(document).on('click','.actionbutton', function(){
     }
     else if(clickedButton.text() === 'BLOCK'){
         console.log("BLOCK BUTTON CLICKED!");
-        clickedButton.removeClass("btn btn-warning");
-        clickedButton.addClass("btn btn-info");
-        clickedButton.text('BLOCKED');
+
+        type = targetRow[1];
+        call_to = targetRow[6].substring(1);
+        call_from = targetRow[4];
+        console.log("BLOCKED BUTTON CLICKED!");
+        console.log("ROW: " + targetRow);
+        console.log("TYPE: " + targetRow[1]);
+        console.log("CALL_FROM: " + targetRow[4]);
+        console.log("CALL_TO: " + call_to);
+
+        if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
+            clickedButton.text('Loading...');
+            $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
+                result = data;
+                alert("RESULT: " + result);
+                console.log("R: " + result)
+                if(result != null) {
+                    clickedButton.text('BLOCKED');
+                }
+
+            });
+        }
+
+        // clickedButton.removeClass("btn btn-warning");
+        // clickedButton.addClass("btn btn-info");
+        // clickedButton.text('BLOCKED');
     }
 });
 $(document).ready(function(){
