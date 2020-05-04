@@ -289,7 +289,7 @@ function getData(){
 
                     // row.append("<td><button class='btn btn-sample form-control' id='"+data[i]["ALERT_ID"]+"'>")
                     $("#table-body").append(row);
-                    audio.play();
+                    // audio.play();
                 }
                 else{
                     if(data[i]["LVL"]==1)
