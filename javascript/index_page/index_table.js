@@ -140,11 +140,12 @@ $(document).on('click','.actionbutton', function(){
             dataType: "json",
             success: function(data) {
                 alert("changed");
-                console.log("wefwefwe")
+                console.log("success")
             },
-            error: function(xhr, textStatus, errorThrown){
-                alert('request failed');
-                console.log("wefwefwe")
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(ajaxOptions);
+                alert(thrownError);
             }
         });
 
