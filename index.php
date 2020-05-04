@@ -199,8 +199,14 @@
     </div>
 
     <div class="row">
-        <div id="axe"></div>
+        <div id="user_num"></div>
     </div>
+
+    <?php
+      $fname = $_POST['number'];
+      echo $fname;
+    ?>
+
 
 </div>
 </body>
