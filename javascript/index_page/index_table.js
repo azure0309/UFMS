@@ -139,6 +139,10 @@ $(document).on('click','.actionbutton', function(){
 
     if(clickedButton.text() === 'BLOCKED'){
         console.log("BLOCKED BUTTON CLICKED!")
+        // clickedButton.text('BLOCKED');
+        clickedButton.removeClass("btn btn-info");
+        clickedButton.addClass("btn btn-warning");
+        clickedButton.text('BLOCKED');
 
         // type = targetRow[1];
         // call_to = targetRow[6].substring(1);
@@ -181,7 +185,6 @@ $(document).on('click','.actionbutton', function(){
         type = targetRow[1];
         call_to = targetRow[6].substring(1);
         call_from = targetRow[4];
-        console.log("BLOCKED BUTTON CLICKED!");
         console.log("ROW: " + targetRow);
         console.log("TYPE: " + targetRow[1]);
         console.log("CALL_FROM: " + targetRow[4]);
@@ -193,10 +196,10 @@ $(document).on('click','.actionbutton', function(){
                 result = data;
                 alert("RESULT: " + result);
                 console.log("R: " + result)
-                if(result != null) {
-                    clickedButton.text('BLOCKED');
-                }
 
+                clickedButton.removeClass("btn btn-warning");
+                clickedButton.addClass("btn btn-info");
+                clickedButton.text('BLOCKED');
             });
         }
 
