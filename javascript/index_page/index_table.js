@@ -134,8 +134,9 @@ $(document).on('click','.actionbutton', function(){
         console.log("SUB: " + call_to);
 
         $.ajax({
-            url: "index.php",
-            type: "GET",
+            // url: "index.php",
+            url: 'controller/index_page/block_action.php',
+            type: "POST",
             data: {number: call_to},
             dataType: "json",
             async: false,
@@ -143,7 +144,7 @@ $(document).on('click','.actionbutton', function(){
                 alert("changed: " + data);
             },
             fail: function(e){
-                alert('request failed' + e);
+                console.log("request failed");
             }
             // cache: false
         });
