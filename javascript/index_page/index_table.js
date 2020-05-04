@@ -138,11 +138,9 @@ $(document).on('click','.actionbutton', function(){
             type: "POST",
             data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
             dataType: "json",
-            async: false,
             success: function(data) {
                 alert("changed");
             },
-            cache: false
         });
 
 
