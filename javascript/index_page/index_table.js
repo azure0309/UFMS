@@ -135,6 +135,8 @@ $(document).on('click','.actionbutton', function(){
     let type;
     let call_to;
     let call_from;
+    let result;
+
     if(clickedButton.text() === 'BLOCKED'){
         type = targetRow[1];
         call_to = targetRow[6].substring(1);
@@ -145,8 +147,13 @@ $(document).on('click','.actionbutton', function(){
         console.log("CALL_FROM: " + targetRow[4]);
         console.log("CALL_TO: " + call_to);
 
-        if(type === 'OD_OUT MANY TO ONE' && call_to!=null){
-            console.log('IOWHFIOWEFHOWIEFHWOE');
+        if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from == null){
+            clickedButton.text('Loading...');
+            $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
+                result = data;
+                alert("RESULT: " + result);
+                clickedButton.text('BLOCKED');
+            });
         }
 
 
