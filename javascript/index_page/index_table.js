@@ -127,20 +127,21 @@ $(document).on('click','.actionbutton', function(){
 
 
     let call_to;
+    let call_url;
     if (clickedButton.text() === 'BLOCK') {
         console.log("YEPP!!!" + targetRow)
 
         call_to = targetRow[6].substring(1);
         console.log("SUB: " + call_to);
-
-
+        call_url = "index.php";
+        window.location = call_url;
         $.ajax({
-            url: 'index.php',
+            url: call_url,
             type: "POST",
-            data:  {number:call_to},
+            data: {number: call_to},
             dataType: "json",
             async: false,
-            success: function(data) {
+            success: function (data) {
                 alert("changed: " + data);
             },
             cache: false
