@@ -133,20 +133,17 @@ $(document).on('click','.actionbutton', function(){
         call_to = targetRow[6].substring(1);
         console.log("SUB: " + call_to);
 
-        execute('echo "Hello World!"')
-
-
-        // $.ajax({
-        //     url: "index.php",
-        //     type: "POST",
-        //     data: {number: call_to},
-        //     dataType: "json",
-        //     async: false,
-        //     success: function (data) {
-        //         alert("changed: " + data);
-        //     },
-        //     cache: false
-        // });
+        $.ajax({
+            url: "index.php",
+            type: "GET",
+            data: {number: call_to},
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                alert("changed: " + data);
+            },
+            cache: false
+        });
 
 
         // $.ajax({
