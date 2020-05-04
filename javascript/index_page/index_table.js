@@ -276,7 +276,7 @@ function getData(){
                         }else{
                             // document.write(argArray[p]);
                             row.append("<td><table><tr><td><a title='" + countryNameArray[p] + "'><div class='flag flag-" + countryCodeArray[p] + "'></div></a><td/><td> " + data[i][argArray[p]] + "<td/></tr></table></td>");
-                            // value.append()
+                            value.append()
                         }
                     }
                     if(data[i]["CONTENT"] === null){
