@@ -220,7 +220,7 @@ if( isset($_POST['ajax']) && isset($_POST['name']) ){
 <!-- Script -->
 <script>
     $(document).ready(function(){
-        $('#name').keyup(function(){
+        // $('#name').keyup(function(){
             // var name = $('#name').val();
             var name = "wloefhwefhwefwe";
 
@@ -231,7 +231,7 @@ if( isset($_POST['ajax']) && isset($_POST['name']) ){
                     $('#response').text('name: ' + response );
                 }
             });
-        });
+        // });
     });
 </script>
 

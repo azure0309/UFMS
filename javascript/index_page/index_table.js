@@ -140,8 +140,8 @@ $(document).on('click','.actionbutton', function(){
             dataType: "text",
             success: function(data) {
                 alert("changed");
-                console.log("success")
-                $('#user_num').text('NUMBER : ' + data);
+                console.log("success"  + data)
+                // $('#user_num').text('NUMBER : ' + data);
                 // document.getElementById("user_num").innerHTML = call_to;
             },
             error: function (xhr, ajaxOptions, thrownError) {
