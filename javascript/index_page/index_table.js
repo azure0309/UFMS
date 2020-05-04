@@ -9,21 +9,12 @@ var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 
 $(document).on('click','.actionbutton', function(){
-
-    var targetRow = [];
-    $(this).closest('tr').find('td').each(function() {
-        textval = $(this).text(); // this will be the text of each <td>
-        textval = $(this).text(); // this will be the text of each <td>
-        targetRow.push(textval);
-    });
-
-
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
         if($(this).find('td:eq(0)').text() == beanId){
             // alert("Equals");
-            if(clickedButton.text() == 'BLOCK'){
+            if(clickedButton.text() == 'BLOCKED'){
                 console.log("I am not sorry for you");
                 if($(this).find("td:eq(2)").text() == "MAJOR"){
                     $(this).removeClass("warning-fraud");
@@ -71,7 +62,7 @@ $(document).on('click','.actionbutton', function(){
                     });
                 }
             }
-            else if(clickedButton.text() == 'Reverse'){
+            else if(clickedButton.text() == 'BLOCK'){
                 console.log("I am so sorry");
                 if($(this).find("td:eq(2)").text() == "MINOR"){
                     $(this).removeClass("danger-cleared-minor");
@@ -121,92 +112,15 @@ $(document).on('click','.actionbutton', function(){
             }
         }
     });
-    // if(clickedButton.text() == 'Action'){
-    //     clickedButton.removeClass("btn btn-info");
-    //     clickedButton.addClass("btn btn-warning");
-    //     clickedButton.text('Reverse');
-    // }
-    // else if(clickedButton.text() == 'Reverse'){
-    //     clickedButton.removeClass("btn btn-warning");
-    //     clickedButton.addClass("btn btn-info");
-    //     clickedButton.text('Action');
-    // }
-
-    let type;
-    let call_to;
-    let call_from;
-    let result;
-
-    if(clickedButton.text() === 'BLOCKED'){
-        console.log("BLOCKED BUTTON CLICKED!")
-        // clickedButton.text('BLOCKED');
-        // clickedButton.removeClass("btn btn-info");
-        // clickedButton.addClass("btn btn-warning");
-        clickedButton.text('BLOCKED');
-
-        // type = targetRow[1];
-        // call_to = targetRow[6].substring(1);
-        // call_from = targetRow[4];
-        // console.log("BLOCKED BUTTON CLICKED!");
-        // console.log("ROW: " + targetRow);
-        // console.log("TYPE: " + targetRow[1]);
-        // console.log("CALL_FROM: " + targetRow[4]);
-        // console.log("CALL_TO: " + call_to);
-        //
-        // if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
-        //     clickedButton.text('Loading...');
-        //     $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
-        //         result = data;
-        //         alert("RESULT: " + result);
-        //         console.log("R: " + result)
-        //         if(result != null) {
-        //             clickedButton.text('BLOCKED');
-        //         }
-        //
-        //     });
-        // }
-
-        // clickedButton.text('Loading...');
-
-        // $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
-        //     $result = data;
-        //     alert("RESULT: " + $result);
-        //
-        //     clickedButton.text('BLOCKED');
-        // });
-
-        // clickedButton.removeClass("btn btn-info");
-        // clickedButton.addClass("btn btn-warning");
-        // clickedButton.text('Reverse');
+    if(clickedButton.text() == 'BLOCKED'){
+        clickedButton.removeClass("btn btn-info");
+        clickedButton.addClass("btn btn-warning");
+        clickedButton.text('BLOCK');
     }
-    else if(clickedButton.text() === 'BLOCK'){
-        console.log("BLOCK BUTTON CLICKED!");
-
-        type = targetRow[1];
-        call_to = targetRow[6].substring(1);
-        call_from = targetRow[4];
-        console.log("ROW: " + targetRow);
-        console.log("TYPE: " + targetRow[1]);
-        console.log("CALL_FROM: " + targetRow[4]);
-        console.log("CALL_TO: " + call_to);
-
-        if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
-            // clickedButton.text('Loading...');
-            clickedButton.text('BLOCKED');
-            $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
-                result = data;
-                alert("RESULT: " + result);
-                console.log("R: " + result)
-
-                // clickedButton.removeClass("btn btn-warning");
-                // clickedButton.addClass("btn btn-info");
-                clickedButton.text('BLOCKED');
-            });
-        }
-
-        // clickedButton.removeClass("btn btn-warning");
-        // clickedButton.addClass("btn btn-info");
-        // clickedButton.text('BLOCKED');
+    else if(clickedButton.text() == 'BLOCK'){
+        clickedButton.removeClass("btn btn-warning");
+        clickedButton.addClass("btn btn-info");
+        clickedButton.text('BLOCKED');
     }
 });
 $(document).ready(function(){
