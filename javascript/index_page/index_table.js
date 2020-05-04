@@ -131,14 +131,23 @@ $(document).on('click','.actionbutton', function(){
     //     clickedButton.addClass("btn btn-info");
     //     clickedButton.text('Action');
     // }
+
+    let type;
     let call_to;
+    let call_from;
     if(clickedButton.text() === 'BLOCKED'){
+        type = targetRow[1];
+        call_to = targetRow[6].substring(1);
+        call_from = targetRow[4];
         console.log("BLOCKED BUTTON CLICKED!");
         console.log("ROW: " + targetRow);
         console.log("TYPE: " + targetRow[1]);
         console.log("CALL_FROM: " + targetRow[4]);
-        call_to = targetRow[6].substring(1);
         console.log("CALL_TO: " + call_to);
+
+        if(type === 'OD_OUT MANY TO ONE' && call_to!=null){
+            console.log('IOWHFIOWEFHOWIEFHWOE');
+        }
 
 
         // clickedButton.text('Loading...');
