@@ -124,7 +124,7 @@ $(document).on('click','.actionbutton', function(){
     else if(clickedButton.text() == 'Reverse'){
         clickedButton.removeClass("btn btn-warning");
         clickedButton.addClass("btn btn-info");
-        clickedButton.text('Action');
+        clickedButton.text('BLOCK');
     }
 });
 $(document).ready(function(){
