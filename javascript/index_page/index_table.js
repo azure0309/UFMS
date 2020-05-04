@@ -142,7 +142,10 @@ $(document).on('click','.actionbutton', function(){
             success: function (data) {
                 alert("changed: " + data);
             },
-            cache: false
+            fail: function(e){
+                alert('request failed' + e);
+            }
+            // cache: false
         });
 
 
