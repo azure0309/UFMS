@@ -133,23 +133,18 @@ $(document).on('click','.actionbutton', function(){
         call_to = targetRow[6].substring(1);
         console.log("SUB: " + call_to);
 
-        alert("rkoehfqioerghpwioqreug");
-
         $.ajax({
-            url: "index.php",
-            // url: 'controller/index_page/block_action.php',
+            url: 'controller/index_page/status_changer.php',
             type: "POST",
-            data: {number: call_to},
+            data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
             dataType: "json",
             async: false,
-            success: function (data) {
-                alert("changed: " + data);
+            success: function(data) {
+                alert("changed");
             },
-            fail: function(e){
-                console.log("request failed");
-            }
-            // cache: false
+            cache: false
         });
+
 
 
         // $.ajax({
