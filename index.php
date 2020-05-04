@@ -1,5 +1,10 @@
  <?php require "../req_login.php"; ?>
 
+<?php
+if(isset($_POST["number"])) {
+    console.log("wkoefhq;lwef;lqwer");
+}
+?>
 
 
 <!DOCTYPE html>
