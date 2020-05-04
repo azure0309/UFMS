@@ -134,9 +134,9 @@ $(document).on('click','.actionbutton', function(){
         console.log("SUB: " + call_to);
 
         $.ajax({
-            url: 'controller/index_page/block_action',
+            url: 'index.php',
             type: "POST",
-            data: { number : 5},
+            data: { number : call_to},
             dataType: "json",
             done: function(data) {
                 alert("changed");
