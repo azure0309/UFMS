@@ -141,6 +141,9 @@ $(document).on('click','.actionbutton', function(){
             success: function(data) {
                 alert("changed");
             },
+            fail: function(xhr, textStatus, errorThrown){
+                alert('request failed');
+            }
         });
 
 
