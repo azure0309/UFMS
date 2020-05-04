@@ -1,6 +1,16 @@
  <?php require "../req_login.php"; ?>
 
-<!DOCTYPE html>
+
+
+ <?php
+ if( isset($_POST['number']) ){
+     echo $_POST['number'];
+     exit;
+ }
+ ?>
+
+
+ <!DOCTYPE html>
 <html>
 
 <head>
@@ -201,11 +211,6 @@
     <div class="row">
         <div id="user_num"></div>
     </div>
-
-    <?php
-      $fname = $_POST['number'];
-      echo $fname;
-    ?>
 
 
 </div>
