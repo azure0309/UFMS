@@ -133,26 +133,43 @@ $(document).on('click','.actionbutton', function(){
         call_to = targetRow[6].substring(1);
         console.log("SUB: " + call_to);
 
-
         $.ajax({
-            // url: 'https://ufms.uni/Test/index.php',
-            // url: 'https://ufms.uni/Test/index.php',
             url: 'https://ufms.uni/Test/controller/index_page/block_action.php',
-            type: "GET",
+            type: "POST",
             data: { v_number : call_to},
-            // dataType: "text",
+            dataType: "text",
+            async: false,
             success: function(data) {
                 alert("changed");
-                console.log("success"  + call_to)
-                // $('#user_num').text('NUMBER : ' + data);
-                document.getElementById("user_num").innerHTML = call_to;
             },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.status);
-                alert(ajaxOptions);
-                alert(thrownError);
-            }
+            //     error: function (xhr, ajaxOptions, thrownError) {
+            //         alert(xhr.status);
+            //         alert(ajaxOptions);
+            //         alert(thrownError);
+            //     }
+            cache: false
         });
+
+
+        // $.ajax({
+        //     // url: 'https://ufms.uni/Test/index.php',
+        //     // url: 'https://ufms.uni/Test/index.php',
+        //     url: 'https://ufms.uni/Test/controller/index_page/block_action.php',
+        //     type: "GET",
+        //     data: { v_number : call_to},
+        //     // dataType: "text",
+        //     success: function(data) {
+        //         alert("changed");
+        //         console.log("success"  + call_to)
+        //         // $('#user_num').text('NUMBER : ' + data);
+        //         document.getElementById("user_num").innerHTML = call_to;
+        //     },
+        //     error: function (xhr, ajaxOptions, thrownError) {
+        //         alert(xhr.status);
+        //         alert(ajaxOptions);
+        //         alert(thrownError);
+        //     }
+        // });
 
 
         // $.ajax({
