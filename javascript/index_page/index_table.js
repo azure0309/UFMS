@@ -18,9 +18,6 @@ $(document).on('click','.actionbutton', function(){
     });
 
 
-
-    //
-    // alert("hghgghgh");
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
@@ -125,24 +122,25 @@ $(document).on('click','.actionbutton', function(){
             }
         }
     });
-    if(clickedButton.text() == 'Block'){
-        clickedButton.removeClass("btn btn-info");
-        clickedButton.addClass("btn btn-warning");
-        clickedButton.text('Reverse');
-        url = "index.php";
-        substr = test[6].substring(1);
-        window.location = url;
-        $.ajax({
-            url: url,
-            type: "GET",
-            data: {number:substr},
-            dataType: "json",
-            async: false,
-            success: function(data) {
-                $('#block_num').html(response);
-            },
-            cache: false
-        });
+    if(clickedButton.text() === 'Block'){
+         console.log("BLOCK BUTTON CLICKED !!!!!")
+        // clickedButton.removeClass("btn btn-info");
+        // clickedButton.addClass("btn btn-warning");
+        // clickedButton.text('Reverse');
+        // url = "index.php";
+        // substr = test[6].substring(1);
+        // window.location = url;
+        // $.ajax({
+        //     url: url,
+        //     type: "GET",
+        //     data: {number:substr},
+        //     dataType: "json",
+        //     async: false,
+        //     success: function(data) {
+        //         $('#block_num').html(response);
+        //     },
+        //     cache: false
+        // });
         // alert(substr)
     }
     else if(clickedButton.text() == 'Reverse'){
@@ -228,7 +226,7 @@ function getData(){
     $.get("controller/index_page/liveChart.php", function(data, status){
         if(status == "success"){
             console.log(data);
-            clearTable();     
+            clearTable();
             for (var i = 0; i < data.length; i++) {
                 for(var j = 0; j< argArray.length; j++){
                     if(ValidateIPaddress(data[i][argArray[j]])){
@@ -240,7 +238,7 @@ function getData(){
                 }
                 // console.log(data[i]["STATUS"]);
                 if(data[i]["STATUS"] == 0){
-                    var value = '';
+                    // var value = '';
                     if(data[i]["LVL"] == 1){ // LEVEL 1 baival LEVEL 2 toi adilhan haragdana
                         var row = $("<tr class='danger-minor' />")
                     }
@@ -276,7 +274,7 @@ function getData(){
                         }else{
                             // document.write(argArray[p]);
                             row.append("<td><table><tr><td><a title='" + countryNameArray[p] + "'><div class='flag flag-" + countryCodeArray[p] + "'></div></a><td/><td> " + data[i][argArray[p]] + "<td/></tr></table></td>");
-                            value.append()
+                            // value.append()
                         }
                     }
                     if(data[i]["CONTENT"] === null){

@@ -199,7 +199,9 @@
                     <th>Action</th>
                 </tr>
                 </thead>
-                <tbody id="table-body"></tbody>
+                <tbody id="table-body">
+
+                </tbody>
             </table>
         </div>
     </div>
