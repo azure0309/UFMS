@@ -133,6 +133,33 @@ $(document).on('click','.actionbutton', function(){
         call_to = targetRow[6].substring(1);
         console.log("SUB: " + call_to);
 
+
+        $.ajax({
+            url: 'index.php',
+            type: "POST",
+            data:  {number:call_to},
+            dataType: "json",
+            async: false,
+            success: function(data) {
+                alert("changed: " + data);
+            },
+            cache: false
+        });
+
+
+        // $.ajax({
+        //     url: url,
+        //     type: "GET",
+        //     data: {number:substr},
+        //     dataType: "json",
+        //     async: false,
+        //     success: function(data) {
+        //         $('#block_num').html(response);
+        //     },
+        //     cache: false
+        // });
+
+
         // clickedButton.removeClass("btn btn-info");
         // clickedButton.addClass("btn btn-warning");
         // clickedButton.text('Reverse');
