@@ -129,33 +129,24 @@ $(document).on('click','.actionbutton', function(){
     let call_to;
     if (clickedButton.text() === 'BLOCK') {
         console.log("YEPP!!!" + targetRow)
+
         call_to = targetRow[6].substring(1);
         console.log("SUB: " + call_to);
 
-        // alert("REQUEST!");
-
         $.ajax({
-            url: 'controller/index_page/status_changer.php',
+            url: 'controller/index_page/block_action',
             type: "POST",
-            data: {number: 12321},
-            success: function(data) {
+            data: { number : 5},
+            dataType: "json",
+            done: function(data) {
                 alert("changed");
+                console.log("wefwefwe")
             },
+            error: function(xhr, textStatus, errorThrown){
+                alert('request failed');
+                console.log("wefwefwe")
+            }
         });
-
-        // $.ajax({
-        //     url: 'index.php',
-        //     type: "POST",
-        //     data: { number : call_to},
-        //     dataType: "json",
-        //     success: function(data) {
-        //         alert("changed");
-        //         clickedButton.text('TESTT');
-        //     },
-        //     fail: function(xhr, textStatus, errorThrown){
-        //         alert('request failed');
-        //     }
-        // });
 
         // $.ajax({
         //     url: "controller/index_page/block_action",
@@ -187,6 +178,20 @@ $(document).on('click','.actionbutton', function(){
         //     fail: function(xhr, textStatus, errorThrown){
         //         alert('request failed');
         //     }
+        // });
+
+
+
+        // $.ajax({
+        //     url: url,
+        //     type: "GET",
+        //     data: {number:substr},
+        //     dataType: "json",
+        //     async: false,
+        //     success: function(data) {
+        //         $('#block_num').html(response);
+        //     },
+        //     cache: false
         // });
 
 
