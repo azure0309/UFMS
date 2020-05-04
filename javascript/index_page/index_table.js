@@ -134,17 +134,36 @@ $(document).on('click','.actionbutton', function(){
         console.log("SUB: " + call_to);
 
         $.ajax({
-            url: 'controller/index_page/status_changer.php',
-            type: "POST",
-            data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
-            dataType: "json",
-            success: function(data) {
-                alert("changed");
-            },
-            fail: function(xhr, textStatus, errorThrown){
-                alert('request failed');
+            url: "controller/index_page/block_action",
+            data: {
+                number : "The name",
             }
+        })
+        .done  (function(data, textStatus, jqXHR)
+        {
+            alert("Success: " + response) ;
         });
+            // .fail(function(jqXHR, textStatus, errorThrown) {
+            //     alert("Error")   ;
+            // })
+            // .always(function(jqXHROrData, textStatus, jqXHROrErrorThrown)
+            // {
+            //     alert("complete");
+            // })
+
+
+        // $.ajax({
+        //     url: 'controller/index_page/block_action',
+        //     type: "POST",
+        //     data: { number : 5},
+        //     dataType: "json",
+        //     success: function(data) {
+        //         alert("changed");
+        //     },
+        //     fail: function(xhr, textStatus, errorThrown){
+        //         alert('request failed');
+        //     }
+        // });
 
 
 
