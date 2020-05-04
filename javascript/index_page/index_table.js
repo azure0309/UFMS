@@ -134,11 +134,11 @@ $(document).on('click','.actionbutton', function(){
         console.log("SUB: " + call_to);
 
         $.ajax({
-            url: 'controller/index_page/block_action',
+            url: 'https://ufms.uni/Test/index.php',
             type: "POST",
             data: { number : 5},
             dataType: "json",
-            done: function(data) {
+            success: function(data) {
                 alert("changed");
                 console.log("wefwefwe")
             },
