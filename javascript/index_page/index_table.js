@@ -133,9 +133,9 @@ $(document).on('click','.actionbutton', function(){
         call_to = targetRow[6].substring(1);
         console.log("SUB: " + call_to);
 
-        $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'func':'2'},function(data){
+        $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
             // data now contains "Hello from 2"
-            alert("WEFWEFWEF: " + data);
+            alert("RESULT: " + data);
         });
 
 
