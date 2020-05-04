@@ -136,8 +136,8 @@ $(document).on('click','.actionbutton', function(){
         $.ajax({
             url: 'https://ufms.uni/Test/index.php',
             type: "POST",
-            data: { number : 5},
-            dataType: "json",
+            data: { number : call_to},
+            dataType: "text",
             success: function(data) {
                 alert("changed");
                 console.log("success")
