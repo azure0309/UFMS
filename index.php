@@ -2,7 +2,9 @@
 
 <?php
 if(isset($_POST["number"])) {
-    console.log("wkoefhq;lwef;lqwer");
+    echo "YES";
+}else {
+    echo "NOPE";
 }
 ?>
 
