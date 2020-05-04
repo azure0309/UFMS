@@ -22,53 +22,56 @@ $(document).on('click','.actionbutton', function(){
     $('#table-body > tr').each(function(){
         if($(this).find('td:eq(0)').text() == beanId){
             // alert("Equals");
-            if(clickedButton.text() == 'BLOCKED'){
-                console.log("I am not sorry for you");
-                if($(this).find("td:eq(2)").text() == "MAJOR"){
-                    $(this).removeClass("warning-fraud");
-                    $(this).addClass("not-fraud");
-                    $.ajax({
-                        url: 'controller/index_page/status_changer.php',
-                        type: "POST",
-                        data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
-                        dataType: "json",
-                        async: false,
-                        success: function(data) {
-                            alert("changed");
-                        },
-                        cache: false
-                    });
-                }
-                else if($(this).find("td:eq(2)").text() == "MINOR"){
-                    $(this).removeClass("danger-minor");
-                    $(this).addClass("danger-cleared-minor");
-                    $.ajax({
-                        url: 'controller/index_page/status_changer.php',
-                        type: "POST",
-                        data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
-                        dataType: "json",
-                        async: false,
-                        success: function(data) {
-                            alert("changed");
-                        },
-                        cache: false
-                    });
-                }
-                else if($(this).find("td:eq(2)").text() == "CRITICAL"){
-                    $(this).removeClass("danger-fraud");
-                    $(this).addClass("danger-cleared-fraud");
-                    $.ajax({
-                        url: 'controller/index_page/status_changer.php',
-                        type: "POST",
-                        data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
-                        dataType: "json",
-                        async: false,
-                        success: function(data) {
-                            alert("changed");
-                        },
-                        cache: false
-                    });
-                }
+            if(clickedButton.text() == 'BLOCKED') {
+
+                // console.log("I am not sorry for you");
+                // if($(this).find("td:eq(2)").text() == "MAJOR"){
+                //     $(this).removeClass("warning-fraud");
+                //     $(this).addClass("not-fraud");
+                //     $.ajax({
+                //         url: 'controller/index_page/status_changer.php',
+                //         type: "POST",
+                //         data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
+                //         dataType: "json",
+                //         async: false,
+                //         success: function(data) {
+                //             alert("changed");
+                //         },
+                //         cache: false
+                //     });
+                // }
+                //
+                // else if($(this).find("td:eq(2)").text() == "MINOR"){
+                //     $(this).removeClass("danger-minor");
+                //     $(this).addClass("danger-cleared-minor");
+                //     $.ajax({
+                //         url: 'controller/index_page/status_changer.php',
+                //         type: "POST",
+                //         data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
+                //         dataType: "json",
+                //         async: false,
+                //         success: function(data) {
+                //             alert("changed");
+                //         },
+                //         cache: false
+                //     });
+                // }
+                // else if($(this).find("td:eq(2)").text() == "CRITICAL"){
+                //     $(this).removeClass("danger-fraud");
+                //     $(this).addClass("danger-cleared-fraud");
+                //     $.ajax({
+                //         url: 'controller/index_page/status_changer.php',
+                //         type: "POST",
+                //         data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
+                //         dataType: "json",
+                //         async: false,
+                //         success: function(data) {
+                //             alert("changed");
+                //         },
+                //         cache: false
+                //     });
+                // }
+
             }
             else if(clickedButton.text() == 'BLOCK'){
                 console.log("I am so sorry");
