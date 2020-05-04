@@ -6,8 +6,7 @@ $user_num = $_POST['#block_num'];
 function fetchShell($v)
 {
 
-   # $any = '(echo "LGI:OP=\"vlrdata\",PWD =\"!QAZ2wsx\";";sleep 5; echo "USE ME:MEID=5;";sleep 5; echo "LST CNACLD: RSNAME=\"NEW_KT\", QR=LOCAL;";sleep 5) | telnet 10.132.0.160 6000 > /home/core/log/' . $v . '_$(date +%Y-%m-%d_%H:%M).log';
-    $any = '(echo "LGI:OP=\"vlrdata\",PWD =\"!QAZ2wsx\";";sleep 5; echo "USE ME:MEID=5;";sleep 5; echo "LST CNACLD: RSNAME=\"NEW_KT\", QR=LOCAL;";sleep 5) | telnet 10.132.0.160 6000 > /var/www/html/Test/log' . $v . '_$(date +%Y-%m-%d_%H:%M).log';
+    $any = '(echo "LGI:OP=\"vlrdata\",PWD =\"!QAZ2wsx\";";sleep 5; echo "USE ME:MEID=5;";sleep 5; echo "LST CNACLD: RSNAME=\"NEW_KT\", QR=LOCAL;";sleep 5) | telnet 10.132.0.160 6000 > /home/core/log/' . $v . '_$(date +%Y-%m-%d_%H:%M).log';
     #$output = shell_exec('(echo "LGI:OP=\"vlrdata\",PWD =\"!QAZ2wsx\";";sleep 5; echo "USE ME:MEID=5;";sleep 5; echo "LST CNACLD: RSNAME=\"NEW_KT\", QR=LOCAL;";sleep 5) | telnet 10.132.0.160 6000 > /home/core/log/$(date +%Y-%m-%d_%H:%M).log');
     $output = shell_exec($any);
     # echo "<pre>$output </pre>";
@@ -33,7 +32,7 @@ fetchShell($user_num);
 
 $b = $user_num . '_' . $exec_date . '.log';
 #echo($b);
-#fetchLog($b);
+fetchLog($b);
 ?>
 
 
