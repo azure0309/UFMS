@@ -134,15 +134,12 @@ $(document).on('click','.actionbutton', function(){
         console.log("SUB: " + call_to);
 
         $.ajax({
-            url: 'controller/index_page/status_changer.php',
+            url: 'index.php',
             type: "POST",
             data: { number : call_to},
             dataType: "json",
             done: function(data) {
                 alert("changed");
-            },
-            success: function(data) {
-                alert("sucess")
             },
             fail: function(xhr, textStatus, errorThrown){
                 alert('request failed');
