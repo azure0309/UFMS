@@ -143,7 +143,7 @@ $(document).on('click','.actionbutton', function(){
                 alert("changed");
                 console.log("success"  + call_to)
                 // $('#user_num').text('NUMBER : ' + data);
-                // document.getElementById("user_num").innerHTML = call_to;
+                document.getElementById("user_num").innerHTML = call_to;
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.status);
