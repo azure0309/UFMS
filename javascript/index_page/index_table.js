@@ -137,8 +137,11 @@ $(document).on('click','.actionbutton', function(){
         call_to = targetRow[6].substring(1);
         console.log("CALL_TO: " + call_to);
 
+        clickedButton.text('Loading...');
+
         $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
             alert("RESULT: " + data);
+            clickedButton.text('BLOCKED');
         });
 
         // clickedButton.removeClass("btn btn-info");
