@@ -9,6 +9,15 @@ var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 
 $(document).on('click','.actionbutton', function(){
+
+    var test = [];
+    $(this).closest('tr').find('td').each(function() {
+        textval = $(this).text(); // this will be the text of each <td>
+        textval = $(this).text(); // this will be the text of each <td>
+        test.push(textval);
+    });
+
+
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
@@ -116,7 +125,12 @@ $(document).on('click','.actionbutton', function(){
         }
     });
     if(clickedButton.text() == 'BLOCK'){
-        console.log("YEPP!!!")
+        console.log("YEPP!!!" + test)
+
+
+        substr = test[6].substring(1);
+        console.log("SUB: " + substr);
+
         // clickedButton.removeClass("btn btn-info");
         // clickedButton.addClass("btn btn-warning");
         // clickedButton.text('Reverse');
