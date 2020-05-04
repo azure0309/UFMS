@@ -227,7 +227,7 @@ function getData(){
     //here will be my ajax request
     $.get("controller/index_page/liveChart.php", function(data, status){
         if(status == "success"){
-            // console.log(data);
+            console.log(data);
             clearTable();     
             for (var i = 0; i < data.length; i++) {
                 for(var j = 0; j< argArray.length; j++){
@@ -276,7 +276,7 @@ function getData(){
                         }else{
                             // document.write(argArray[p]);
                             row.append("<td><table><tr><td><a title='" + countryNameArray[p] + "'><div class='flag flag-" + countryCodeArray[p] + "'></div></a><td/><td> " + data[i][argArray[p]] + "<td/></tr></table></td>");
-                            value.append()
+                            // value.append()
                         }
                     }
                     if(data[i]["CONTENT"] === null){

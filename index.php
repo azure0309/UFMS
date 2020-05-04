@@ -1,4 +1,6 @@
-<?php require "../req_login.php"; ?>
+ <?php
+  require "../req_login.php";
+  ?>
 
 <!DOCTYPE html>
 <html>
@@ -26,9 +28,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-<script type="text/javascript" src="javascript/index_page/index_in.js"></script>
-<script type="text/javascript" src="javascript/index_page/index.js"></script>
-<script type="text/javascript" src="javascript/index_page/index_table.js"></script>
+<!--<script type="text/javascript" src="javascript/index_page/index_in.js"></script>-->
+<!--<script type="text/javascript" src="javascript/index_page/index.js"></script>-->
+<!--<script type="text/javascript" src="javascript/index_page/index_table.js"></script>-->
 <nav class="navbar navbar-default navbar-collapse">
     <div class="container-fluid">
         <div class="navbar-header">
