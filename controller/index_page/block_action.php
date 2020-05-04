@@ -1,9 +1,7 @@
 <?php
 function func1() {echo 'Hello from 1';}
 function func2() {
-    $v = 123;
-    $any = '(echo "LGI:OP=\"tuguldur\",PWD =\"Azure_0309\";";sleep 5; echo "USE ME:MEID=5;";sleep 5; echo "ADD CALLPRICHK: CSCNAME=\"UNITEL\", PFX=K\'00825761080898, CPFX=K\'EEEEEEEE, PCDN=\"INVALID\", PT=INHIBITED, FCC=CV45;"; sleep 5) | telnet 10.132.0.160 6000 > /home/core/log/'.$v.'_$(date +%Y-%m-%d_%H:%M).log';
-    $output = shell_exec($any);
+    $output = shell_exec('(echo "LGI:OP=\"vlrdata\",PWD =\"!QAZ2wsx\";";sleep 5; echo "USE ME:MEID=5;";sleep 5; echo "LST CNACLD: RSNAME=\"NEW_KT\", QR=LOCAL;";sleep 5) | telnet 10.132.0.160 6000 > /home/core/log/$(date +%Y-%m-%d_%H:%M).log');
     echo "<pre>$output </pre>";
 //    echo 'Hello from 2';
 }
