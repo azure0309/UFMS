@@ -9,15 +9,6 @@ var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 
 $(document).on('click','.actionbutton', function(){
-
-    var targetRow = [];
-    $(this).closest('tr').find('td').each(function() {
-        textval = $(this).text(); // this will be the text of each <td>
-        textval = $(this).text(); // this will be the text of each <td>
-        targetRow.push(textval);
-    });
-
-
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
@@ -56,7 +47,6 @@ $(document).on('click','.actionbutton', function(){
                     });
                 }
                 else if($(this).find("td:eq(2)").text() == "CRITICAL"){
-                    console.log("Action->CRITICAL");
                     $(this).removeClass("danger-fraud");
                     $(this).addClass("danger-cleared-fraud");
                     $.ajax({
@@ -73,9 +63,7 @@ $(document).on('click','.actionbutton', function(){
                 }
             }
             else if(clickedButton.text() == 'Reverse'){
-
                 console.log("I am so sorry");
-
                 if($(this).find("td:eq(2)").text() == "MINOR"){
                     $(this).removeClass("danger-cleared-minor");
                     $(this).addClass("danger-minor");
@@ -124,85 +112,21 @@ $(document).on('click','.actionbutton', function(){
             }
         }
     });
-
-
-    let call_to;
-    if (clickedButton.text() === 'BLOCKED') {
-        console.log("YEPP!!!" + targetRow)
-
-        call_to = targetRow[6].substring(1);
-        console.log("SUB: " + call_to);
-
-        // $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
-        //     // data now contains "Hello from 2"
-        //     alert("RESULT: " + data);
-        // });
-
-        // $.ajax({
-        //     url: "https://ufms.uni/Test/index.php&f=hello",
-        //     type: "GET",
-        //     success: function(data){
-        //         //Do something here with the "data"
-        //         alert("success!!!");
-        //     }
-        // });
-
-
-
-        // $.ajax({
-        //     url: 'https://ufms.uni/Test/controller/index_page/block_action.php',
-        //     type: "POST",
-        //     data: { v_number : call_to},
-        //     dataType: "text",
-        //     async: false,
-        //     success: function(data) {
-        //         alert("changed");
-        //     },
-        //     //     error: function (xhr, ajaxOptions, thrownError) {
-        //     //         alert(xhr.status);
-        //     //         alert(ajaxOptions);
-        //     //         alert(thrownError);
-        //     //     }
-        //     cache: false
-        // });
-
-
-        // $.ajax({
-        //     // url: 'https://ufms.uni/Test/index.php',
-        //     // url: 'https://ufms.uni/Test/index.php',
-        //     url: 'https://ufms.uni/Test/controller/index_page/block_action.php',
-        //     type: "GET",
-        //     data: { v_number : call_to},
-        //     // dataType: "text",
-        //     success: function(data) {
-        //         alert("changed");
-        //         console.log("success"  + call_to)
-        //         // $('#user_num').text('NUMBER : ' + data);
-        //         document.getElementById("user_num").innerHTML = call_to;
-        //     },
-        //     error: function (xhr, ajaxOptions, thrownError) {
-        //         alert(xhr.status);
-        //         alert(ajaxOptions);
-        //         alert(thrownError);
-        //     }
-        // });
-
-
-
-        // clickedButton.removeClass("btn btn-info");
-        // clickedButton.addClass("btn btn-warning");
-        // clickedButton.text('Reverse');
-    } else if (clickedButton.text() == 'Reverse') {
+    if(clickedButton.text() == 'Action'){
+        clickedButton.removeClass("btn btn-info");
+        clickedButton.addClass("btn btn-warning");
+        clickedButton.text('Reverse');
+    }
+    else if(clickedButton.text() == 'Reverse'){
         clickedButton.removeClass("btn btn-warning");
         clickedButton.addClass("btn btn-info");
-        clickedButton.text('BLOCK');
+        clickedButton.text('Action');
     }
 });
 $(document).ready(function(){
     getTrunkNames();
     getData();
 });
-
 
 function getTrunkNames(){
 
@@ -323,9 +247,7 @@ function getData(){
                         row.append("<td>" + data[i]["CONTENT"] + "</td>");
                     }
                     row.append("<td>" + data[i]["CREATED"] + "</td>");
-                    // row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>Action</button></td>");
-                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCKED</button></td>");
-
+                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>Action</button></td>");
                     // row.append("<td><button class='btn btn-sample form-control' id='"+data[i]["ALERT_ID"]+"'>")
                     $("#table-body").append(row);
                     // audio.play();
@@ -372,7 +294,7 @@ function getData(){
                         row.append("<td>" + data[i]["CONTENT"] + "</td>");
                     }
                     row.append("<td>" + data[i]["CREATED"] + "</td>");
-                    row.append("<td><button class='actionbutton form-control btn btn-warning' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCK</button></td>");
+                    row.append("<td><button class='actionbutton form-control btn btn-warning' data-bean-id='"+data[i]["ALERT_ID"]+"'>Reverse</button></td>");
                     $("#table-body").append(row);
                 }
                 ipArray = ["empty", "empty", "empty", "empty"];
