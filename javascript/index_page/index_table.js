@@ -204,21 +204,6 @@ $(document).on('click','.actionbutton', function(){
         //     }
         // });
 
-
-
-        // $.ajax({
-        //     url: url,
-        //     type: "GET",
-        //     data: {number:substr},
-        //     dataType: "json",
-        //     async: false,
-        //     success: function(data) {
-        //         $('#block_num').html(response);
-        //     },
-        //     cache: false
-        // });
-
-
         // clickedButton.removeClass("btn btn-info");
         // clickedButton.addClass("btn btn-warning");
         // clickedButton.text('Reverse');
