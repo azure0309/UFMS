@@ -1,14 +1,8 @@
  <?php require "../req_login.php"; ?>
 
-<?php
-if(isset($_POST["number"])) {
-    echo "YES";
-}else {
-    echo "NOPE";
-}
-
-echo "wefwef";
-?>
+ <?php
+ echo 'Hello ' . htmlspecialchars($_POST["number"]) . '!';
+ ?>
 
 
 <!DOCTYPE html>
