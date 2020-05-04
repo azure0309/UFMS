@@ -138,7 +138,6 @@ $(document).on('click','.actionbutton', function(){
         //     alert("RESULT: " + data);
         // });
 
-
         // $.ajax({
         //     url: "https://ufms.uni/Test/index.php&f=hello",
         //     type: "GET",
