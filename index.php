@@ -1,6 +1,4 @@
- <?php
-  require "../req_login.php";
-  ?>
+ <?php require "../req_login.php"; ?>
 
 <!DOCTYPE html>
 <html>
@@ -179,10 +177,6 @@
     <br/>
     <br/>
 
-    <div id="block_num">
-
-    </div>
-
     <div class="row">
         <div class="col-md-12 table-responsive">
             <table id="responsive-table" class="table table-bordered table-condensed">
@@ -199,9 +193,7 @@
                     <th>Action</th>
                 </tr>
                 </thead>
-                <tbody id="table-body">
-
-                </tbody>
+                <tbody id="table-body"></tbody>
             </table>
         </div>
     </div>
