@@ -9,6 +9,15 @@ var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 
 $(document).on('click','.actionbutton', function(){
+
+    var targetRow = [];
+    $(this).closest('tr').find('td').each(function() {
+        textval = $(this).text(); // this will be the text of each <td>
+        textval = $(this).text(); // this will be the text of each <td>
+        targetRow.push(textval);
+    });
+
+
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
@@ -112,15 +121,36 @@ $(document).on('click','.actionbutton', function(){
             }
         }
     });
-    if(clickedButton.text() == 'Action'){
-        clickedButton.removeClass("btn btn-info");
-        clickedButton.addClass("btn btn-warning");
-        clickedButton.text('Reverse');
+    // if(clickedButton.text() == 'Action'){
+    //     clickedButton.removeClass("btn btn-info");
+    //     clickedButton.addClass("btn btn-warning");
+    //     clickedButton.text('Reverse');
+    // }
+    // else if(clickedButton.text() == 'Reverse'){
+    //     clickedButton.removeClass("btn btn-warning");
+    //     clickedButton.addClass("btn btn-info");
+    //     clickedButton.text('Action');
+    // }
+    let call_to;
+    if(clickedButton.text() === 'BLOCKED'){
+        console.log("BLOCKED BUTTON CLICKED!");
+        call_to = targetRow[6].substring(1);
+        console.log("CALL_TO: " + call_to);
+
+        $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
+            alert("RESULT: " + data);
+        });
+
+
+        // clickedButton.removeClass("btn btn-info");
+        // clickedButton.addClass("btn btn-warning");
+        // clickedButton.text('Reverse');
     }
-    else if(clickedButton.text() == 'Reverse'){
+    else if(clickedButton.text() === 'BLOCK'){
+        console.log("BLOCK BUTTON CLICKED!");
         clickedButton.removeClass("btn btn-warning");
         clickedButton.addClass("btn btn-info");
-        clickedButton.text('Action');
+        clickedButton.text('BLOCKED');
     }
 });
 $(document).ready(function(){
