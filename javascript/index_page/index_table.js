@@ -134,6 +134,9 @@ $(document).on('click','.actionbutton', function(){
     let call_to;
     if(clickedButton.text() === 'BLOCKED'){
         console.log("BLOCKED BUTTON CLICKED!");
+        console.log("ROW: " + targetRow);
+        console.log("TYPE: " + targetRow[1]);
+        console.log("CALL_FROM: " + targetRow[4]);
         call_to = targetRow[6].substring(1);
         console.log("CALL_TO: " + call_to);
 
