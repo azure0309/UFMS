@@ -1,10 +1,7 @@
 <?php require "../req_login.php"; ?>
 
 
-<?php
-//    $number = $_POST['number'];
-//    echo $number;
-//?>
+
 
 
 <!DOCTYPE html>
