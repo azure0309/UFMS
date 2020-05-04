@@ -1,6 +1,8 @@
 <?php
     $id = $_POST["number"];
-    console.log("Message here" + $id);
+    echo "ewfwef";
+    echo $id;
+//    console.log("Message here" + $id);
 
 ?>
 
