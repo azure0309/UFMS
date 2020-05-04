@@ -1,10 +1,6 @@
  <?php require "../req_login.php"; ?>
 
 
- <?php
- $id = $_POST["number"];
-
- ?>
 
 <!DOCTYPE html>
 <html>
