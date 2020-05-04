@@ -129,21 +129,9 @@ $(document).on('click','.actionbutton', function(){
     let call_to;
     if (clickedButton.text() === 'BLOCK') {
 
-        $.ajax({
-            url: 'index.php',
-            type: "POST",
-            data: { number : 5},
-            dataType: "json",
-            done: function(data) {
-                alert("changed");
-            },
-            fail: function(xhr, textStatus, errorThrown){
-                alert('request failed');
-            }
-        });
+
 
         console.log("YEPP!!!" + targetRow)
-
         call_to = targetRow[6].substring(1);
         console.log("SUB: " + call_to);
 
@@ -154,8 +142,9 @@ $(document).on('click','.actionbutton', function(){
             type: "POST",
             data: { number : call_to},
             dataType: "json",
-            done: function(data) {
+            success: function(data) {
                 alert("changed");
+                clickedButton.text('TESTT');
             },
             fail: function(xhr, textStatus, errorThrown){
                 alert('request failed');
