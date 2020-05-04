@@ -120,10 +120,15 @@ $(document).on('click','.actionbutton', function(){
             }
         }
     });
+    let type;
+    let call_to;
+    let call_from;
+    let result;
     if(clickedButton.text() == 'BLOCKED'){
-        clickedButton.removeClass("btn btn-info");
-        clickedButton.addClass("btn btn-warning");
-        clickedButton.text('BLOCK');
+        console.log("BLOCKED BUTTON CLICKED!")
+        // clickedButton.removeClass("btn btn-info");
+        // clickedButton.addClass("btn btn-warning");
+        // clickedButton.text('BLOCK');
     }
     else if(clickedButton.text() == 'BLOCK'){
         console.log("BLOCK BUTTON CLICKED!");
