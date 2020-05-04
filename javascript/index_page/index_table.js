@@ -10,6 +10,12 @@ var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 $(document).on('click','.actionbutton', function(){
     //
+    var test = [];
+    $(this).closest('tr').find('td').each(function() {
+        textval = $(this).text(); // this will be the text of each <td>
+        textval = $(this).text(); // this will be the text of each <td>
+        test.push(textval);
+    });
 
 
 
@@ -123,20 +129,20 @@ $(document).on('click','.actionbutton', function(){
         clickedButton.removeClass("btn btn-info");
         clickedButton.addClass("btn btn-warning");
         clickedButton.text('Reverse');
-        // url = "index.php";
-        // substr = test[6].substring(1);
-        // window.location = url;
-        // $.ajax({
-        //     url: url,
-        //     type: "GET",
-        //     data: {number:substr},
-        //     dataType: "json",
-        //     async: false,
-        //     success: function(data) {
-        //         $('#block_num').html(response);
-        //     },
-        //     cache: false
-        // });
+        url = "index.php";
+        substr = test[6].substring(1);
+        window.location = url;
+        $.ajax({
+            url: url,
+            type: "GET",
+            data: {number:substr},
+            dataType: "json",
+            async: false,
+            success: function(data) {
+                $('#block_num').html(response);
+            },
+            cache: false
+        });
         // alert(substr)
     }
     else if(clickedButton.text() == 'Reverse'){
@@ -268,7 +274,7 @@ function getData(){
                                 row.append("<td>" + data[i][argArray[p]] + "</td>");
                             }
                         }else{
-                            document.write(argArray[p]);
+                            // document.write(argArray[p]);
                             row.append("<td><table><tr><td><a title='" + countryNameArray[p] + "'><div class='flag flag-" + countryCodeArray[p] + "'></div></a><td/><td> " + data[i][argArray[p]] + "<td/></tr></table></td>");
                             value.append()
                         }
