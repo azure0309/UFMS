@@ -198,18 +198,12 @@
         </div>
     </div>
 
+    <div class="row">
+        <div id="axe"></div>
+    </div>
+
 </div>
 </body>
 </html>
-
- <?php
-
- if (!empty($_POST)) {
-     echo "NOT EMPTY";
- }else {
-     echo "EMPTY";
- }
-
- ?>
 
 

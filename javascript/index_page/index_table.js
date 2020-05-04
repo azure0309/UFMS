@@ -141,6 +141,7 @@ $(document).on('click','.actionbutton', function(){
             success: function(data) {
                 alert("changed");
                 console.log("success")
+                document.getElementById("axe").innerHTML = call_to;
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.status);
