@@ -6,6 +6,8 @@ if(isset($_POST["number"])) {
 }else {
     echo "NOPE";
 }
+
+echo "wefwef";
 ?>
 
 
