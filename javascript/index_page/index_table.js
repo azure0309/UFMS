@@ -23,7 +23,7 @@ $(document).on('click','.actionbutton', function(){
     $('#table-body > tr').each(function(){
         if($(this).find('td:eq(0)').text() == beanId){
             // alert("Equals");
-            if(clickedButton.text() == 'Action'){
+            if(clickedButton.text() == 'BLOCK'){
                 console.log("I am not sorry for you");
                 if($(this).find("td:eq(2)").text() == "MAJOR"){
                     $(this).removeClass("warning-fraud");
@@ -140,8 +140,8 @@ $(document).on('click','.actionbutton', function(){
     if(clickedButton.text() === 'BLOCKED'){
         console.log("BLOCKED BUTTON CLICKED!")
         // clickedButton.text('BLOCKED');
-        clickedButton.removeClass("btn btn-info");
-        clickedButton.addClass("btn btn-warning");
+        // clickedButton.removeClass("btn btn-info");
+        // clickedButton.addClass("btn btn-warning");
         clickedButton.text('BLOCKED');
 
         // type = targetRow[1];
