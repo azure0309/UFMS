@@ -1,10 +1,5 @@
  <?php require "../req_login.php"; ?>
 
- <?php
- echo 'Hello ' . htmlspecialchars($_POST["number"]) . '!';
- ?>
-
-
 <!DOCTYPE html>
 <html>
 
@@ -206,3 +201,15 @@
 </div>
 </body>
 </html>
+
+ <?php
+
+ if (!empty($_POST)) {
+     echo "NOT EMPTY";
+ }else {
+     echo "EMPTY";
+ }
+
+ ?>
+
+
