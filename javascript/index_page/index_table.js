@@ -9,20 +9,12 @@ var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 
 $(document).on('click','.actionbutton', function(){
-    //
-    var test = [];
-    $(this).closest('tr').find('td').each(function() {
-        textval = $(this).text(); // this will be the text of each <td>
-        textval = $(this).text(); // this will be the text of each <td>
-        test.push(textval);
-    });
-
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
         if($(this).find('td:eq(0)').text() == beanId){
             // alert("Equals");
-            if(clickedButton.text() == 'Block'){
+            if(clickedButton.text() == 'Action'){
                 console.log("I am not sorry for you");
                 if($(this).find("td:eq(2)").text() == "MAJOR"){
                     $(this).removeClass("warning-fraud");
@@ -35,10 +27,9 @@ $(document).on('click','.actionbutton', function(){
                         async: false,
                         success: function(data) {
                             alert("changed");
-                            alert(data.id)
                         },
                         cache: false
-                    }); 
+                    });
                 }
                 else if($(this).find("td:eq(2)").text() == "MINOR"){
                     $(this).removeClass("danger-minor");
@@ -53,7 +44,7 @@ $(document).on('click','.actionbutton', function(){
                             alert("changed");
                         },
                         cache: false
-                    }); 
+                    });
                 }
                 else if($(this).find("td:eq(2)").text() == "CRITICAL"){
                     $(this).removeClass("danger-fraud");
@@ -68,8 +59,8 @@ $(document).on('click','.actionbutton', function(){
                             alert("changed");
                         },
                         cache: false
-                    }); 
-                } 
+                    });
+                }
             }
             else if(clickedButton.text() == 'Reverse'){
                 console.log("I am so sorry");
@@ -86,7 +77,7 @@ $(document).on('click','.actionbutton', function(){
                             alert("changed");
                         },
                         cache: false
-                    }); 
+                    });
                 }
                 else if($(this).find("td:eq(2)").text() == "MAJOR"){
                     $(this).removeClass("not-fraud");
@@ -101,7 +92,7 @@ $(document).on('click','.actionbutton', function(){
                             alert("changed");
                         },
                         cache: false
-                    }); 
+                    });
                 }
                 else if($(this).find("td:eq(2)").text() == "CRITICAL"){
                     $(this).removeClass("danger-cleared-fraud");
@@ -116,47 +107,21 @@ $(document).on('click','.actionbutton', function(){
                             alert("changed");
                         },
                         cache: false
-                    }); 
-                } 
+                    });
+                }
             }
         }
     });
-
-
-    if(clickedButton.text() === 'Block'){
-         console.log("BLOCK BUTTON CLICKED !!!!!")
-        // clickedButton.removeClass("btn btn-info");
-        // clickedButton.addClass("btn btn-warning");
-        // clickedButton.text('Reverse');
-        // url = "index.php";
-        // substr = test[6].substring(1);
-        // window.location = url;
-        // $.ajax({
-        //     url: url,
-        //     type: "GET",
-        //     data: {number:substr},
-        //     dataType: "json",
-        //     async: false,
-        //     success: function(data) {
-        //         $('#block_num').html(response);
-        //     },
-        //     cache: false
-        // });
-        // alert(substr)
+    if(clickedButton.text() == 'Action'){
+        clickedButton.removeClass("btn btn-info");
+        clickedButton.addClass("btn btn-warning");
+        clickedButton.text('Reverse');
     }
     else if(clickedButton.text() == 'Reverse'){
         clickedButton.removeClass("btn btn-warning");
         clickedButton.addClass("btn btn-info");
-        clickedButton.text('Block');
+        clickedButton.text('Action');
     }
-
-    // $(document).ready(function(){
-    //     $('#block_button').click(function () {
-    //
-    //     });
-    //     return false;
-    // });
-
 });
 $(document).ready(function(){
     getTrunkNames();
@@ -212,10 +177,10 @@ function clearTable(){
     $('#table-body tr').remove();
 }
 
-function ValidateIPaddress(ipaddress)   
-{  
-    if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress))  
-    {  
+function ValidateIPaddress(ipaddress)
+{
+    if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress))
+    {
         return true;
     }else{
         return false;
@@ -226,7 +191,7 @@ function getData(){
     //here will be my ajax request
     $.get("controller/index_page/liveChart.php", function(data, status){
         if(status == "success"){
-            console.log(data);
+            // console.log(data);
             clearTable();
             for (var i = 0; i < data.length; i++) {
                 for(var j = 0; j< argArray.length; j++){
@@ -239,7 +204,7 @@ function getData(){
                 }
                 // console.log(data[i]["STATUS"]);
                 if(data[i]["STATUS"] == 0){
-                    var value = '';
+
                     if(data[i]["LVL"] == 1){ // LEVEL 1 baival LEVEL 2 toi adilhan haragdana
                         var row = $("<tr class='danger-minor' />")
                     }
@@ -273,9 +238,7 @@ function getData(){
                                 row.append("<td>" + data[i][argArray[p]] + "</td>");
                             }
                         }else{
-                            // document.write(argArray[p]);
                             row.append("<td><table><tr><td><a title='" + countryNameArray[p] + "'><div class='flag flag-" + countryCodeArray[p] + "'></div></a><td/><td> " + data[i][argArray[p]] + "<td/></tr></table></td>");
-                            value.append()
                         }
                     }
                     if(data[i]["CONTENT"] === null){
@@ -284,18 +247,14 @@ function getData(){
                         row.append("<td>" + data[i]["CONTENT"] + "</td>");
                     }
                     row.append("<td>" + data[i]["CREATED"] + "</td>");
-                    row.append("<td>" +
-                        "<button class='actionbutton form-control btn btn-info' id='block_button' data-bean-id='"+data[i]["ALERT_ID"]+"'>Block</button>" +
-                        "</td>");
-
+                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>Action</button></td>");
                     // row.append("<td><button class='btn btn-sample form-control' id='"+data[i]["ALERT_ID"]+"'>")
                     $("#table-body").append(row);
-                    // audio.play();
-                }
-                else{
+                    audio.play();
+                }else{
                     if(data[i]["LVL"]==1)
                     {
-                         var row = $("<tr class='danger-cleared-minor' />")
+                        var row = $("<tr class='danger-cleared-minor' />")
                     }
                     if(data[i]["LVL"] == 2){
                         var row = $("<tr class='not-fraud' />")
