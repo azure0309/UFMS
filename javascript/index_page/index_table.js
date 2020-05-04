@@ -141,7 +141,6 @@ $(document).on('click','.actionbutton', function(){
             alert("RESULT: " + data);
         });
 
-
         // clickedButton.removeClass("btn btn-info");
         // clickedButton.addClass("btn btn-warning");
         // clickedButton.text('Reverse');
