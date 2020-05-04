@@ -191,14 +191,15 @@ $(document).on('click','.actionbutton', function(){
         console.log("CALL_TO: " + call_to);
 
         if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
-            clickedButton.text('Loading...');
+            // clickedButton.text('Loading...');
+            clickedButton.text('BLOCKED');
             $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
                 result = data;
                 alert("RESULT: " + result);
                 console.log("R: " + result)
 
-                clickedButton.removeClass("btn btn-warning");
-                clickedButton.addClass("btn btn-info");
+                // clickedButton.removeClass("btn btn-warning");
+                // clickedButton.addClass("btn btn-info");
                 clickedButton.text('BLOCKED');
             });
         }
