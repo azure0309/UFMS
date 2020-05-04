@@ -135,10 +135,12 @@ $(document).on('click','.actionbutton', function(){
 
 
         $.ajax({
-            url: 'https://ufms.uni/Test/index.php',
-            type: "POST",
-            data: { number : call_to},
-            dataType: "text",
+            // url: 'https://ufms.uni/Test/index.php',
+            // url: 'https://ufms.uni/Test/index.php',
+            url: 'https://ufms.uni/Test/controller/index_page/block_action.php',
+            type: "GET",
+            data: { v_number : call_to},
+            // dataType: "text",
             success: function(data) {
                 alert("changed");
                 console.log("success"  + call_to)

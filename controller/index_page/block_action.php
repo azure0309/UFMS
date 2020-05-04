@@ -1,4 +1,7 @@
 <?php
-    $id = $_POST["number"];
+
+ $name = $_POST['v_number'];
+ echo $name;
+
 ?>
 
