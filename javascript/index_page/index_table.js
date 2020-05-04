@@ -10,11 +10,11 @@ var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 $(document).on('click','.actionbutton', function(){
 
-    var test = [];
+    var targetRow = [];
     $(this).closest('tr').find('td').each(function() {
         textval = $(this).text(); // this will be the text of each <td>
         textval = $(this).text(); // this will be the text of each <td>
-        test.push(textval);
+        targetRow.push(textval);
     });
 
 
@@ -124,18 +124,19 @@ $(document).on('click','.actionbutton', function(){
             }
         }
     });
-    if(clickedButton.text() == 'BLOCK'){
-        console.log("YEPP!!!" + test)
 
 
-        substr = test[6].substring(1);
-        console.log("SUB: " + substr);
+    let call_to;
+    if (clickedButton.text() === 'BLOCK') {
+        console.log("YEPP!!!" + targetRow)
+
+        call_to = targetRow[6].substring(1);
+        console.log("SUB: " + call_to);
 
         // clickedButton.removeClass("btn btn-info");
         // clickedButton.addClass("btn btn-warning");
         // clickedButton.text('Reverse');
-    }
-    else if(clickedButton.text() == 'Reverse'){
+    } else if (clickedButton.text() == 'Reverse') {
         clickedButton.removeClass("btn btn-warning");
         clickedButton.addClass("btn btn-info");
         clickedButton.text('BLOCK');
