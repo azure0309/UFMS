@@ -47,6 +47,7 @@ $(document).on('click','.actionbutton', function(){
                     });
                 }
                 else if($(this).find("td:eq(2)").text() == "CRITICAL"){
+                    console.log("Action->CRITICAL");
                     $(this).removeClass("danger-fraud");
                     $(this).addClass("danger-cleared-fraud");
                     $.ajax({
@@ -63,7 +64,9 @@ $(document).on('click','.actionbutton', function(){
                 }
             }
             else if(clickedButton.text() == 'Reverse'){
+
                 console.log("I am so sorry");
+
                 if($(this).find("td:eq(2)").text() == "MINOR"){
                     $(this).removeClass("danger-cleared-minor");
                     $(this).addClass("danger-minor");
@@ -112,10 +115,11 @@ $(document).on('click','.actionbutton', function(){
             }
         }
     });
-    if(clickedButton.text() == 'Action'){
-        clickedButton.removeClass("btn btn-info");
-        clickedButton.addClass("btn btn-warning");
-        clickedButton.text('Reverse');
+    if(clickedButton.text() == 'BLOCK'){
+        console.log("YEPP!!!")
+        // clickedButton.removeClass("btn btn-info");
+        // clickedButton.addClass("btn btn-warning");
+        // clickedButton.text('Reverse');
     }
     else if(clickedButton.text() == 'Reverse'){
         clickedButton.removeClass("btn btn-warning");
@@ -247,7 +251,9 @@ function getData(){
                         row.append("<td>" + data[i]["CONTENT"] + "</td>");
                     }
                     row.append("<td>" + data[i]["CREATED"] + "</td>");
-                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>Action</button></td>");
+                    // row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>Action</button></td>");
+                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCK</button></td>");
+
                     // row.append("<td><button class='btn btn-sample form-control' id='"+data[i]["ALERT_ID"]+"'>")
                     $("#table-body").append(row);
                     // audio.play();
