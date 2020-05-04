@@ -152,6 +152,7 @@ $(document).on('click','.actionbutton', function(){
             $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
                 result = data;
                 alert("RESULT: " + result);
+                console.log("R: " + result)
                 clickedButton.text('BLOCKED');
             });
         }
