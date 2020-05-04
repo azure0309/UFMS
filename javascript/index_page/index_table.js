@@ -133,9 +133,6 @@ $(document).on('click','.actionbutton', function(){
         call_to = targetRow[6].substring(1);
         console.log("SUB: " + call_to);
 
-
-        const exec = require('child_process').exec
-
         execute('echo "Hello World!"')
 
 
@@ -187,6 +184,8 @@ function execute(command) {
         process.stdout.write(stdout)
     })
 }
+
+
 
 function getTrunkNames(){
 
