@@ -133,40 +133,24 @@ $(document).on('click','.actionbutton', function(){
         call_to = targetRow[6].substring(1);
         console.log("SUB: " + call_to);
 
-        jQuery.ajax({
-            type: "POST",
+
+        $.ajax({
             url: 'https://ufms.uni/Test/index.php',
-            dataType: 'json',
-            data: {functionname: 'add', arguments: [1, 2]},
-            success: function (obj, textstatus) {
-                alert("SUCCESS!");
-                if( !('error' in obj) ) {
-                    yourVariable = obj.result;
-                }
-                else {
-                    console.log(obj.error);
-                }
+            type: "POST",
+            data: { number : call_to},
+            dataType: "text",
+            success: function(data) {
+                alert("changed");
+                console.log("success"  + call_to)
+                // $('#user_num').text('NUMBER : ' + data);
+                // document.getElementById("user_num").innerHTML = call_to;
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(ajaxOptions);
+                alert(thrownError);
             }
         });
-
-        // $.ajax({
-        //     url: 'https://ufms.uni/Test/index.php',
-        //     type: "POST",
-        //     data: { number : call_to},
-        //     dataType: "text",
-        //     success: function(data) {
-        //         alert("changed");
-        //         console.log("success"  + call_to)
-        //         // $('#user_num').text('NUMBER : ' + data);
-        //         // document.getElementById("user_num").innerHTML = call_to;
-        //     },
-        //     error: function (xhr, ajaxOptions, thrownError) {
-        //         alert(xhr.status);
-        //         alert(ajaxOptions);
-        //         alert(thrownError);
-        //     }
-        // });
-
 
 
         // $.ajax({
