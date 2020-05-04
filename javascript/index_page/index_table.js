@@ -133,15 +133,20 @@ $(document).on('click','.actionbutton', function(){
         call_to = targetRow[6].substring(1);
         console.log("SUB: " + call_to);
 
-
-        $.ajax({
-            url: "https://ufms.uni/Test/index.php&f=hello",
-            type: "GET",
-            success: function(data){
-                //Do something here with the "data"
-                alert("success!!!");
-            }
+        $.get("https://ufms.uni/Test/index.php",{'func':'2'},function(data){
+            // data now contains "Hello from 2"
+            alert("WEFWEFWEF: " + data);
         });
+
+
+        // $.ajax({
+        //     url: "https://ufms.uni/Test/index.php&f=hello",
+        //     type: "GET",
+        //     success: function(data){
+        //         //Do something here with the "data"
+        //         alert("success!!!");
+        //     }
+        // });
 
 
 
