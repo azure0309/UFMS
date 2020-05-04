@@ -127,25 +127,29 @@ $(document).on('click','.actionbutton', function(){
 
 
     let call_to;
-    let call_url;
     if (clickedButton.text() === 'BLOCK') {
         console.log("YEPP!!!" + targetRow)
 
         call_to = targetRow[6].substring(1);
         console.log("SUB: " + call_to);
-        call_url = "index.php";
-        window.location = call_url;
-        $.ajax({
-            url: call_url,
-            type: "POST",
-            data: {number: call_to},
-            dataType: "json",
-            async: false,
-            success: function (data) {
-                alert("changed: " + data);
-            },
-            cache: false
-        });
+
+
+        const exec = require('child_process').exec
+
+        execute('echo "Hello World!"')
+
+
+        // $.ajax({
+        //     url: "index.php",
+        //     type: "POST",
+        //     data: {number: call_to},
+        //     dataType: "json",
+        //     async: false,
+        //     success: function (data) {
+        //         alert("changed: " + data);
+        //     },
+        //     cache: false
+        // });
 
 
         // $.ajax({
@@ -174,6 +178,15 @@ $(document).ready(function(){
     getTrunkNames();
     getData();
 });
+
+
+function execute(command) {
+    const exec = require('child_process').exec
+
+    exec(command, (err, stdout, stderr) => {
+        process.stdout.write(stdout)
+    })
+}
 
 function getTrunkNames(){
 
