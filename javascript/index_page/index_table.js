@@ -53,9 +53,10 @@ $(document).on('click','.actionbutton', function(){
                             }
                             console.log("COUNT: " + count);
                             if(count === 3) {
+                                console.log("TRUE!!!");
                                 clickedButton.removeClass("btn btn-warning");
                                 clickedButton.addClass("btn btn-info");
-                                clickedButton.text('BLOCKED');
+                                clickedButton.text('BLOCKEDFFFFF');
                             }
 
                         }
@@ -201,13 +202,14 @@ $(document).on('click','.actionbutton', function(){
 
         }
     });
-    if(clickedButton.text() == 'BLOCK'){
+    // if(clickedButton.text() == 'BLOCK'){
+    //     console.log()
         // clickedButton.removeClass("btn btn-info");
         // clickedButton.addClass("btn btn-warning");
         // clickedButton.text('BLOCKED');
-    }
-    else if(clickedButton.text() == 'BLOCKED'){
-        console.log("BLOCKED PRESSED!")
+    // }
+    // else if(clickedButton.text() == 'BLOCKED'){
+    //     console.log("BLOCKED PRESSED!")
         // clickedButton.removeClass("btn btn-info");
         // clickedButton.addClass("btn btn-warning");
         // clickedButton.text('BLOCKED');
@@ -215,7 +217,8 @@ $(document).on('click','.actionbutton', function(){
         // clickedButton.removeClass("btn btn-warning");
         // clickedButton.addClass("btn btn-info");
         // clickedButton.text('BLOCK');
-    }
+    // }
+
 });
 $(document).ready(function(){
     getTrunkNames();
