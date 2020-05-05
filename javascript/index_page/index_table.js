@@ -9,21 +9,12 @@ var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 
 $(document).on('click','.actionbutton', function(){
-
-    var targetRow = [];
-    $(this).closest('tr').find('td').each(function() {
-        textval = $(this).text(); // this will be the text of each <td>
-        textval = $(this).text(); // this will be the text of each <td>
-        targetRow.push(textval);
-    });
-
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
         if($(this).find('td:eq(0)').text() == beanId){
             // alert("Equals");
-            if(clickedButton.text() == 'BLOCKED') {
-
+            if(clickedButton.text() == 'Action'){
                 console.log("I am not sorry for you");
                 if($(this).find("td:eq(2)").text() == "MAJOR"){
                     $(this).removeClass("warning-fraud");
@@ -40,7 +31,6 @@ $(document).on('click','.actionbutton', function(){
                         cache: false
                     });
                 }
-
                 else if($(this).find("td:eq(2)").text() == "MINOR"){
                     $(this).removeClass("danger-minor");
                     $(this).addClass("danger-cleared-minor");
@@ -71,9 +61,8 @@ $(document).on('click','.actionbutton', function(){
                         cache: false
                     });
                 }
-
             }
-            else if(clickedButton.text() == 'BLOCK'){
+            else if(clickedButton.text() == 'Reverse'){
                 console.log("I am so sorry");
                 if($(this).find("td:eq(2)").text() == "MINOR"){
                     $(this).removeClass("danger-cleared-minor");
@@ -123,71 +112,16 @@ $(document).on('click','.actionbutton', function(){
             }
         }
     });
-    let type = targetRow[1];
-    let call_to = targetRow[6].substring(1);
-    let call_from = targetRow[4];
-    let result;
-
-    if(clickedButton.text() === 'BLOCKED'){
-
-        console.log("BLOCKED BUTTON CLICKED!")
-        // type = targetRow[1];
-        // call_to = targetRow[6].substring(1);
-        // call_from = targetRow[4];
-        //
-        // if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
-        //     $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
-        //         result = data;
-        //         console.log(result);
-        //         // RETCODE = 313303 Same record exists in Call Rights Check table[ADD CALLPRICHK]
-        //         const n = result.includes("RETCODE = 313303");
-        //         if(n) {
-        //             console.log("BLOCK хийгдсэн байна!");
-        //             alert("BLOCK хийгдсэн байна!")
-        //         }else {
-        //             console.log("BLOCK хийх шаардлагатай!");
-        //             // clickedButton.removeClass("btn btn-info");
-        //             // clickedButton.addClass("btn btn-warning");
-        //             // clickedButton.text('BLOCK');
-        //         }
-        //
-        //     });
-        // }
-
+    if(clickedButton.text() == 'Action'){
+        clickedButton.removeClass("btn btn-info");
+        clickedButton.addClass("btn btn-warning");
+        clickedButton.text('Reverse');
     }
-    else if(clickedButton.text() === 'BLOCK') {
-
-        console.log("BLOCK BUTTON CLICKED!");
-
-        console.log("ROW: " + targetRow);
-        console.log("TYPE: " + targetRow[1]);
-        console.log("CALL_FROM: " + targetRow[4]);
-        console.log("CALL_TO: " + call_to);
-
-        if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
-            clickedButton.text('Loading...');
-            $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
-                result = data;
-                console.log("R: " + result);
-
-                let count = 0;
-                let position = result.indexOf('RETCODE = 0');
-                while (position !== -1) {
-                    count++;
-                    position = result.indexOf('RETCODE = 0', position + 1);
-                }
-                console.log("COUNT: " + count);
-                if(count === 3) {
-                    clickedButton.removeClass("btn btn-warning");
-                    clickedButton.addClass("btn btn-info");
-                    clickedButton.text('BLOCKED');
-                }
-
-            });
-        }
-
+    else if(clickedButton.text() == 'Reverse'){
+        clickedButton.removeClass("btn btn-warning");
+        clickedButton.addClass("btn btn-info");
+        clickedButton.text('Action');
     }
-
 });
 $(document).ready(function(){
     getTrunkNames();
@@ -218,6 +152,7 @@ function getTrunkNames(){
     });
     // console.log(trunkNames);
 }
+
 
 function getCountryCode(ipaddress){
     var cc = '';
@@ -312,7 +247,7 @@ function getData(){
                         row.append("<td>" + data[i]["CONTENT"] + "</td>");
                     }
                     row.append("<td>" + data[i]["CREATED"] + "</td>");
-                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCK</button></td>");
+                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>Action</button></td>");
                     // row.append("<td><button class='btn btn-sample form-control' id='"+data[i]["ALERT_ID"]+"'>")
                     $("#table-body").append(row);
                     // audio.play();
@@ -359,7 +294,7 @@ function getData(){
                         row.append("<td>" + data[i]["CONTENT"] + "</td>");
                     }
                     row.append("<td>" + data[i]["CREATED"] + "</td>");
-                    row.append("<td><button class='actionbutton form-control btn btn-warning' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCKED</button></td>");
+                    row.append("<td><button class='actionbutton form-control btn btn-warning' data-bean-id='"+data[i]["ALERT_ID"]+"'>Reverse</button></td>");
                     $("#table-body").append(row);
                 }
                 ipArray = ["empty", "empty", "empty", "empty"];
