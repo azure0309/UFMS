@@ -141,12 +141,8 @@ $(document).on('click','.actionbutton', function(){
             clickedButton.text('Loading...');
             $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
                 result = data;
-                console.log("R: " + result);
-
-                var arrayOfLines = result.value.split("\n");
-
-                console.log("wefw: " + arrayOfLines)
-
+                const n = result.includes("RETCODE = 313303");
+                console.log(n);
             });
         }
 
