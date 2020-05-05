@@ -141,7 +141,24 @@ $(document).on('click','.actionbutton', function(){
             $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
                 result = data;
                 console.log(result);
+                // RETCODE = 313303 Same record exists in Call Rights Check table[ADD CALLPRICHK]
                 const n = result.includes("RETCODE = 313303");
+                if(n) {
+                    console.log("BLOCK хийгдсэн!");
+
+                    let count = 0
+                    let position = result.indexOf('RETCODE = 0')
+
+                    while (position !== -1) {
+                        count++
+                        position = str.indexOf('RETCODE = 0', position + 1)
+                    }
+
+                    console.log("COUNT: " + count)  // displays 4
+
+                }else {
+                    console.log("BLOCK хийх шаардлагатай!");
+                }
                 console.log(n);
             });
         }
