@@ -62,7 +62,7 @@ $(document).on('click','.actionbutton', function(){
                     });
                 }
             }
-            else if(clickedButton.text() == 'Reverse'){
+            else if(clickedButton.text() == 'BLOCKED'){
                 console.log("I am so sorry");
                 if($(this).find("td:eq(2)").text() == "MINOR"){
                     $(this).removeClass("danger-cleared-minor");
@@ -115,12 +115,12 @@ $(document).on('click','.actionbutton', function(){
     if(clickedButton.text() == 'BLOCK'){
         clickedButton.removeClass("btn btn-info");
         clickedButton.addClass("btn btn-warning");
-        clickedButton.text('Reverse');
+        clickedButton.text('BLOCKED');
     }
-    else if(clickedButton.text() == 'Reverse'){
+    else if(clickedButton.text() == 'BLOCKED'){
         clickedButton.removeClass("btn btn-warning");
         clickedButton.addClass("btn btn-info");
-        clickedButton.text('Action');
+        clickedButton.text('BLOCK');
     }
 });
 $(document).ready(function(){
@@ -294,7 +294,7 @@ function getData(){
                         row.append("<td>" + data[i]["CONTENT"] + "</td>");
                     }
                     row.append("<td>" + data[i]["CREATED"] + "</td>");
-                    row.append("<td><button class='actionbutton form-control btn btn-warning' data-bean-id='"+data[i]["ALERT_ID"]+"'>Reverse</button></td>");
+                    row.append("<td><button class='actionbutton form-control btn btn-warning' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCKED</button></td>");
                     $("#table-body").append(row);
                 }
                 ipArray = ["empty", "empty", "empty", "empty"];
