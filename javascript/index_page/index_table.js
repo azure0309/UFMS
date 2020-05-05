@@ -219,7 +219,6 @@ function getTrunkNames(){
     // console.log(trunkNames);
 }
 
-
 function getCountryCode(ipaddress){
     var cc = '';
     var tn = '';
