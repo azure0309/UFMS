@@ -138,9 +138,9 @@ $(document).on('click','.actionbutton', function(){
         call_from = targetRow[4];
 
         if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
-            clickedButton.text('Loading...');
             $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
                 result = data;
+                console.log(result);
                 const n = result.includes("RETCODE = 313303");
                 console.log(n);
             });
