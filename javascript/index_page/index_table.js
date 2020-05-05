@@ -42,6 +42,10 @@ $(document).on('click','.actionbutton', function(){
                         result = data;
                         console.log("R: " + result);
 
+                        clickedButton.removeClass("btn btn-warning");
+                        clickedButton.addClass("btn btn-info");
+                        clickedButton.text('BLOCKED');
+
                         // let count = 0;
                         // let position = result.indexOf('RETCODE = 0');
                         // while (position !== -1) {
@@ -183,9 +187,9 @@ $(document).on('click','.actionbutton', function(){
     }
     else if(clickedButton.text() == 'BLOCKED'){
         console.log("BLOCKED PRESSED!")
-        clickedButton.removeClass("btn btn-info");
-        clickedButton.addClass("btn btn-warning");
-        clickedButton.text('BLOCKED');
+        // clickedButton.removeClass("btn btn-info");
+        // clickedButton.addClass("btn btn-warning");
+        // clickedButton.text('BLOCKED');
 
         // clickedButton.removeClass("btn btn-warning");
         // clickedButton.addClass("btn btn-info");
