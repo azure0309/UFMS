@@ -14,7 +14,7 @@ $(document).on('click','.actionbutton', function(){
     $('#table-body > tr').each(function(){
         if($(this).find('td:eq(0)').text() == beanId){
             // alert("Equals");
-            if(clickedButton.text() == 'Action'){
+            if(clickedButton.text() == 'BLOCK'){
                 console.log("I am not sorry for you");
                 if($(this).find("td:eq(2)").text() == "MAJOR"){
                     $(this).removeClass("warning-fraud");
@@ -112,7 +112,7 @@ $(document).on('click','.actionbutton', function(){
             }
         }
     });
-    if(clickedButton.text() == 'Action'){
+    if(clickedButton.text() == 'BLOCK'){
         clickedButton.removeClass("btn btn-info");
         clickedButton.addClass("btn btn-warning");
         clickedButton.text('Reverse');
@@ -247,7 +247,7 @@ function getData(){
                         row.append("<td>" + data[i]["CONTENT"] + "</td>");
                     }
                     row.append("<td>" + data[i]["CREATED"] + "</td>");
-                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>Action</button></td>");
+                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCK</button></td>");
                     // row.append("<td><button class='btn btn-sample form-control' id='"+data[i]["ALERT_ID"]+"'>")
                     $("#table-body").append(row);
                     // audio.play();
