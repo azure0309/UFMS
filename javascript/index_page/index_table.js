@@ -127,65 +127,67 @@ $(document).on('click','.actionbutton', function(){
     let call_to = targetRow[6].substring(1);
     let call_from = targetRow[4];
     let result;
+
     if(clickedButton.text() === 'BLOCKED'){
+
         console.log("BLOCKED BUTTON CLICKED!")
-        clickedButton.removeClass("btn btn-info");
-        clickedButton.addClass("btn btn-warning");
-        clickedButton.text('Loading...');
-
-        type = targetRow[1];
-        call_to = targetRow[6].substring(1);
-        call_from = targetRow[4];
-
-        if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
-            $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
-                result = data;
-                console.log(result);
-                // RETCODE = 313303 Same record exists in Call Rights Check table[ADD CALLPRICHK]
-                const n = result.includes("RETCODE = 313303");
-                if(n) {
-                    console.log("BLOCK хийгдсэн байна!");
-                    alert("BLOCK хийгдсэн байна!")
-                }else {
-                    console.log("BLOCK хийх шаардлагатай!");
-                    // clickedButton.removeClass("btn btn-info");
-                    // clickedButton.addClass("btn btn-warning");
-                    // clickedButton.text('BLOCK');
-                }
-
-            });
-        }
+        // type = targetRow[1];
+        // call_to = targetRow[6].substring(1);
+        // call_from = targetRow[4];
+        //
+        // if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
+        //     $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
+        //         result = data;
+        //         console.log(result);
+        //         // RETCODE = 313303 Same record exists in Call Rights Check table[ADD CALLPRICHK]
+        //         const n = result.includes("RETCODE = 313303");
+        //         if(n) {
+        //             console.log("BLOCK хийгдсэн байна!");
+        //             alert("BLOCK хийгдсэн байна!")
+        //         }else {
+        //             console.log("BLOCK хийх шаардлагатай!");
+        //             // clickedButton.removeClass("btn btn-info");
+        //             // clickedButton.addClass("btn btn-warning");
+        //             // clickedButton.text('BLOCK');
+        //         }
+        //
+        //     });
+        // }
 
     }
     else if(clickedButton.text() === 'BLOCK') {
+
         console.log("BLOCK BUTTON CLICKED!");
-        console.log("ROW: " + targetRow);
-        console.log("TYPE: " + targetRow[1]);
-        console.log("CALL_FROM: " + targetRow[4]);
-        console.log("CALL_TO: " + call_to);
 
-        if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
-            clickedButton.text('Loading...');
-            $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
-                result = data;
-                console.log("R: " + result);
+        // console.log("ROW: " + targetRow);
+        // console.log("TYPE: " + targetRow[1]);
+        // console.log("CALL_FROM: " + targetRow[4]);
+        // console.log("CALL_TO: " + call_to);
+        //
+        // if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
+        //     clickedButton.text('Loading...');
+        //     $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
+        //         result = data;
+        //         console.log("R: " + result);
+        //
+        //         let count = 0;
+        //         let position = result.indexOf('RETCODE = 0');
+        //         while (position !== -1) {
+        //             count++;
+        //             position = result.indexOf('RETCODE = 0', position + 1);
+        //         }
+        //         console.log("COUNT: " + count);
+        //         if(count === 3) {
+        //             clickedButton.removeClass("btn btn-warning");
+        //             clickedButton.addClass("btn btn-info");
+        //             clickedButton.text('BLOCKED');
+        //         }
+        //
+        //     });
+        // }
 
-                let count = 0;
-                let position = result.indexOf('RETCODE = 0');
-                while (position !== -1) {
-                    count++;
-                    position = result.indexOf('RETCODE = 0', position + 1);
-                }
-                console.log("COUNT: " + count);
-                if(count === 3) {
-                    clickedButton.removeClass("btn btn-warning");
-                    clickedButton.addClass("btn btn-info");
-                    clickedButton.text('BLOCKED');
-                }
-
-            });
-        }
     }
+
 });
 $(document).ready(function(){
     getTrunkNames();
@@ -311,7 +313,7 @@ function getData(){
                         row.append("<td>" + data[i]["CONTENT"] + "</td>");
                     }
                     row.append("<td>" + data[i]["CREATED"] + "</td>");
-                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCKED</button></td>");
+                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCKEDDFDF</button></td>");
                     // row.append("<td><button class='btn btn-sample form-control' id='"+data[i]["ALERT_ID"]+"'>")
                     $("#table-body").append(row);
                     // audio.play();
