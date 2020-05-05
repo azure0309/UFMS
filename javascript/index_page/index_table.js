@@ -136,6 +136,21 @@ $(document).on('click','.actionbutton', function(){
         type = targetRow[1];
         call_to = targetRow[6].substring(1);
         call_from = targetRow[4];
+
+        if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
+            clickedButton.text('Loading...');
+            $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
+                result = data;
+                alert("RESULT: " + result);
+                console.log("R: " + result);
+                var lines = result.val().split('\n');
+                for(var i = 0;i < lines.length;i++){
+                    console.log("LINE: " + lines[i]);
+                    //code here using lines[i] which will give you each line
+                }
+            });
+        }
+
     }
     else if(clickedButton.text() == 'BLOCK'){
         console.log("BLOCK BUTTON CLICKED!");
