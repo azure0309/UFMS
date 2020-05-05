@@ -105,17 +105,16 @@ $(document).on('click','.actionbutton', function(){
                     });
                 }
             }
-            else if(clickedButton.text() == 'BLOCKED'){
+            else if(clickedButton.text() == 'BLOCKED')  {
 
-                $.ajax({
-                    type: "GET",
-                    // timeout: 30000,
-                    url: "https://ufms.uni/Test/controller/index_page/block_action.php",
-                    data: {'user_num':call_to },
-                    success: function (msg) {
-                       console.log("WEFKHWKLEFWEL" + msg)
-                    }
-                });
+                // $.ajax({
+                //     type: "GET",
+                //     url: "https://ufms.uni/Test/controller/index_page/block_action.php",
+                //     data: {'user_num':call_to },
+                //     success: function (msg) {
+                //        console.log("WEFKHWKLEFWEL" + msg)
+                //     }
+                // });
 
 
                 // $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
@@ -125,7 +124,7 @@ $(document).on('click','.actionbutton', function(){
 
 
                 console.log("I am so sorry");
-                if($(this).find("td:eq(2)").text() == "MINOR"){
+                if($(this).find("td:eq(2)").text() == "MINOR") {
                     $(this).removeClass("danger-cleared-minor");
                     $(this).addClass("danger-minor");
                     $.ajax({
@@ -171,6 +170,8 @@ $(document).on('click','.actionbutton', function(){
                     });
                 }
             }
+
+
         }
     });
     if(clickedButton.text() == 'BLOCK'){
@@ -179,6 +180,7 @@ $(document).on('click','.actionbutton', function(){
         clickedButton.text('BLOCKED');
     }
     else if(clickedButton.text() == 'BLOCKED'){
+        console.log("BLOCKED PRESSED!")
         // clickedButton.removeClass("btn btn-warning");
         // clickedButton.addClass("btn btn-info");
         // clickedButton.text('BLOCK');
