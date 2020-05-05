@@ -144,13 +144,13 @@ $(document).on('click','.actionbutton', function(){
                 // RETCODE = 313303 Same record exists in Call Rights Check table[ADD CALLPRICHK]
                 const n = result.includes("RETCODE = 313303");
                 if(n) {
-                    console.log("BLOCK хийгдсэн!");
+                    console.log("BLOCK хийгдсэн байна!");
                     alert("BLOCK хийгдсэн байна!")
                 }else {
                     console.log("BLOCK хийх шаардлагатай!");
-                    clickedButton.removeClass("btn btn-info");
-                    clickedButton.addClass("btn btn-warning");
-                    clickedButton.text('BLOCK');
+                    // clickedButton.removeClass("btn btn-info");
+                    // clickedButton.addClass("btn btn-warning");
+                    // clickedButton.text('BLOCK');
                 }
 
             });
@@ -176,7 +176,7 @@ $(document).on('click','.actionbutton', function(){
                     count++;
                     position = result.indexOf('RETCODE = 0', position + 1);
                 }
-                console.log("COUNT: " + count)
+                console.log("COUNT: " + count);
                 if(count === 3) {
                     clickedButton.removeClass("btn btn-warning");
                     clickedButton.addClass("btn btn-info");
