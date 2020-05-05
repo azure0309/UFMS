@@ -42,22 +42,21 @@ $(document).on('click','.actionbutton', function(){
                         result = data;
                         console.log("R: " + result);
 
-                        let count = 0;
-                        let position = result.indexOf('RETCODE = 0');
-                        while (position !== -1) {
-                            count++;
-                            position = result.indexOf('RETCODE = 0', position + 1);
-                        }
-                        console.log("COUNT: " + count);
-                        if(count === 3) {
-                            clickedButton.removeClass("btn btn-warning");
-                            clickedButton.addClass("btn btn-info");
-                            clickedButton.text('BLOCKED');
-                        }
+                        // let count = 0;
+                        // let position = result.indexOf('RETCODE = 0');
+                        // while (position !== -1) {
+                        //     count++;
+                        //     position = result.indexOf('RETCODE = 0', position + 1);
+                        // }
+                        // console.log("COUNT: " + count);
+                        // if(count === 3) {
+                        //     clickedButton.removeClass("btn btn-warning");
+                        //     clickedButton.addClass("btn btn-info");
+                        //     clickedButton.text('BLOCKED');
+                        // }
 
                     });
                 }
-
 
                 console.log("I am not sorry for you");
                 if($(this).find("td:eq(2)").text() == "MAJOR"){
@@ -107,6 +106,24 @@ $(document).on('click','.actionbutton', function(){
                 }
             }
             else if(clickedButton.text() == 'BLOCKED'){
+
+                $.ajax({
+                    type: "GET",
+                    // timeout: 30000,
+                    url: "https://ufms.uni/Test/controller/index_page/block_action.php",
+                    data: {'user_num':call_to },
+                    success: function (msg) {
+                       console.log("WEFKHWKLEFWEL" + msg)
+                    }
+                });
+
+
+                // $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
+                //
+                //
+                // });
+
+
                 console.log("I am so sorry");
                 if($(this).find("td:eq(2)").text() == "MINOR"){
                     $(this).removeClass("danger-cleared-minor");
@@ -162,9 +179,9 @@ $(document).on('click','.actionbutton', function(){
         clickedButton.text('BLOCKED');
     }
     else if(clickedButton.text() == 'BLOCKED'){
-        clickedButton.removeClass("btn btn-warning");
-        clickedButton.addClass("btn btn-info");
-        clickedButton.text('BLOCK');
+        // clickedButton.removeClass("btn btn-warning");
+        // clickedButton.addClass("btn btn-info");
+        // clickedButton.text('BLOCK');
     }
 });
 $(document).ready(function(){
