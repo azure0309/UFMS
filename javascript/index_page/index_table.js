@@ -44,9 +44,21 @@ $(document).on('click','.actionbutton', function(){
                         data: {'user_num':call_to },
                         success: function (msg) {
                            console.log("WEFKHWKLEFWEL" + msg);
-                            clickedButton.removeClass("btn btn-info");
-                            clickedButton.addClass("btn btn-warning");
-                            clickedButton.text('BLOCKED');
+
+                            let position = msg.indexOf('RETCODE = 0');
+                            while (position !== -1) {
+                                count++;
+                                position = msg.indexOf('RETCODE = 0', position + 1);
+                            }
+
+                            if(position == 3){
+                                clickedButton.removeClass("btn btn-info");
+                                clickedButton.addClass("btn btn-warning");
+                                clickedButton.text('BLOCKED');
+                            }else{
+                                console.log('NOT SUCCESS!');
+                            }
+
                         }
                     });
 
