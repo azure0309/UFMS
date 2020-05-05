@@ -38,12 +38,21 @@ $(document).on('click','.actionbutton', function(){
 
                 if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
                     clickedButton.text('Loading...');
-                    $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
-                        result = data;
-                        console.log("R: " + result);
-                        clickedButton.removeClass("btn btn-warning");
-                        clickedButton.addClass("btn btn-info");
-                        clickedButton.text('BLOCKED');
+                    $.ajax({
+                        type: "GET",
+                        url: "https://ufms.uni/Test/controller/index_page/block_action.php",
+                        data: {'user_num':call_to },
+                        success: function (msg) {
+                           console.log("WEFKHWKLEFWEL" + msg)
+                        }
+                    });
+
+                    // $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
+                    //     result = data;
+                    //     console.log("R: " + result);
+                    //     clickedButton.removeClass("btn btn-warning");
+                    //     clickedButton.addClass("btn btn-info");
+                    //     clickedButton.text('BLOCKED');
                         // let count = 0;
                         // let position = result.indexOf('RETCODE = 0');
                         // while (position !== -1) {
@@ -57,7 +66,7 @@ $(document).on('click','.actionbutton', function(){
                         //     clickedButton.text('BLOCKED');
                         // }
 
-                    });
+                    // });
                 }
 
                 console.log("I am not sorry for you");
