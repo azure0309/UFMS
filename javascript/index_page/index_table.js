@@ -9,12 +9,50 @@ var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 
 $(document).on('click','.actionbutton', function(){
+
+    var targetRow = [];
+    $(this).closest('tr').find('td').each(function() {
+        textval = $(this).text(); // this will be the text of each <td>
+        textval = $(this).text(); // this will be the text of each <td>
+        targetRow.push(textval);
+    });
+
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
         if($(this).find('td:eq(0)').text() == beanId){
             // alert("Equals");
             if(clickedButton.text() == 'BLOCK'){
+
+                console.log("BLOCK BUTTON CLICKED!");
+                console.log("ROW: " + targetRow);
+                console.log("TYPE: " + targetRow[1]);
+                console.log("CALL_FROM: " + targetRow[4]);
+                console.log("CALL_TO: " + call_to);
+
+                if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
+                    clickedButton.text('Loading...');
+                    $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
+                        result = data;
+                        console.log("R: " + result);
+
+                        let count = 0;
+                        let position = result.indexOf('RETCODE = 0');
+                        while (position !== -1) {
+                            count++;
+                            position = result.indexOf('RETCODE = 0', position + 1);
+                        }
+                        console.log("COUNT: " + count);
+                        if(count === 3) {
+                            clickedButton.removeClass("btn btn-warning");
+                            clickedButton.addClass("btn btn-info");
+                            clickedButton.text('BLOCKED');
+                        }
+
+                    });
+                }
+
+
                 console.log("I am not sorry for you");
                 if($(this).find("td:eq(2)").text() == "MAJOR"){
                     $(this).removeClass("warning-fraud");
