@@ -45,18 +45,17 @@ $(document).on('click','.actionbutton', function(){
                         success: function (msg) {
                            console.log("WEFKHWKLEFWEL" + msg);
 
+                            let count = 0;
                             let position = msg.indexOf('RETCODE = 0');
                             while (position !== -1) {
                                 count++;
                                 position = msg.indexOf('RETCODE = 0', position + 1);
                             }
-
-                            if(position == 3){
-                                clickedButton.removeClass("btn btn-info");
-                                clickedButton.addClass("btn btn-warning");
+                            console.log("COUNT: " + count);
+                            if(count === 3) {
+                                clickedButton.removeClass("btn btn-warning");
+                                clickedButton.addClass("btn btn-info");
                                 clickedButton.text('BLOCKED');
-                            }else{
-                                console.log('NOT SUCCESS!');
                             }
 
                         }
