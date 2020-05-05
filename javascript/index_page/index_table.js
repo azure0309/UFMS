@@ -181,6 +181,10 @@ $(document).on('click','.actionbutton', function(){
     }
     else if(clickedButton.text() == 'BLOCKED'){
         console.log("BLOCKED PRESSED!")
+        clickedButton.removeClass("btn btn-info");
+        clickedButton.addClass("btn btn-warning");
+        clickedButton.text('BLOCKED');
+
         // clickedButton.removeClass("btn btn-warning");
         // clickedButton.addClass("btn btn-info");
         // clickedButton.text('BLOCK');
