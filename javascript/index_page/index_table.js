@@ -17,6 +17,12 @@ $(document).on('click','.actionbutton', function(){
         targetRow.push(textval);
     });
 
+    let type = targetRow[1];
+    let call_to = targetRow[6].substring(1);
+    let call_from = targetRow[4];
+    let result;
+
+
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
