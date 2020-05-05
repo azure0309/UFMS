@@ -123,21 +123,22 @@ $(document).on('click','.actionbutton', function(){
             }
         }
     });
-    let type;
-    let call_to;
-    let call_from;
+    let type = targetRow[1];
+    let call_to = targetRow[6].substring(1);
+    let call_from = targetRow[4];
     let result;
     if(clickedButton.text() == 'BLOCKED'){
         console.log("BLOCKED BUTTON CLICKED!")
         // clickedButton.removeClass("btn btn-info");
         // clickedButton.addClass("btn btn-warning");
         // clickedButton.text('BLOCK');
-    }
-    else if(clickedButton.text() == 'BLOCK'){
-        console.log("BLOCK BUTTON CLICKED!");
+
         type = targetRow[1];
         call_to = targetRow[6].substring(1);
         call_from = targetRow[4];
+    }
+    else if(clickedButton.text() == 'BLOCK'){
+        console.log("BLOCK BUTTON CLICKED!");
         console.log("ROW: " + targetRow);
         console.log("TYPE: " + targetRow[1]);
         console.log("CALL_FROM: " + targetRow[4]);
@@ -148,15 +149,19 @@ $(document).on('click','.actionbutton', function(){
             $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
                 result = data;
                 alert("RESULT: " + result);
-                console.log("R: " + result)
+                console.log("R: " + result);
+
+                var lines = result.val().split('\n');
+                for(var i = 0;i < lines.length;i++){
+                     console.log("LINE: " + lines[i]);
+                    //code here using lines[i] which will give you each line
+                }
 
                 clickedButton.removeClass("btn btn-warning");
                 clickedButton.addClass("btn btn-info");
                 clickedButton.text('BLOCKED');
             });
         }
-
-
 
     }
 });
