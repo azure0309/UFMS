@@ -145,6 +145,7 @@ $(document).on('click','.actionbutton', function(){
                 const n = result.includes("RETCODE = 313303");
                 if(n) {
                     console.log("BLOCK хийгдсэн!");
+                    alert("BLOCK хийгдсэн байна!")
                 }else {
                     console.log("BLOCK хийх шаардлагатай!");
                 }
