@@ -24,53 +24,53 @@ $(document).on('click','.actionbutton', function(){
             // alert("Equals");
             if(clickedButton.text() == 'BLOCKED') {
 
-                // console.log("I am not sorry for you");
-                // if($(this).find("td:eq(2)").text() == "MAJOR"){
-                //     $(this).removeClass("warning-fraud");
-                //     $(this).addClass("not-fraud");
-                //     $.ajax({
-                //         url: 'controller/index_page/status_changer.php',
-                //         type: "POST",
-                //         data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
-                //         dataType: "json",
-                //         async: false,
-                //         success: function(data) {
-                //             alert("changed");
-                //         },
-                //         cache: false
-                //     });
-                // }
-                //
-                // else if($(this).find("td:eq(2)").text() == "MINOR"){
-                //     $(this).removeClass("danger-minor");
-                //     $(this).addClass("danger-cleared-minor");
-                //     $.ajax({
-                //         url: 'controller/index_page/status_changer.php',
-                //         type: "POST",
-                //         data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
-                //         dataType: "json",
-                //         async: false,
-                //         success: function(data) {
-                //             alert("changed");
-                //         },
-                //         cache: false
-                //     });
-                // }
-                // else if($(this).find("td:eq(2)").text() == "CRITICAL"){
-                //     $(this).removeClass("danger-fraud");
-                //     $(this).addClass("danger-cleared-fraud");
-                //     $.ajax({
-                //         url: 'controller/index_page/status_changer.php',
-                //         type: "POST",
-                //         data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
-                //         dataType: "json",
-                //         async: false,
-                //         success: function(data) {
-                //             alert("changed");
-                //         },
-                //         cache: false
-                //     });
-                // }
+                console.log("I am not sorry for you");
+                if($(this).find("td:eq(2)").text() == "MAJOR"){
+                    $(this).removeClass("warning-fraud");
+                    $(this).addClass("not-fraud");
+                    $.ajax({
+                        url: 'controller/index_page/status_changer.php',
+                        type: "POST",
+                        data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
+                        dataType: "json",
+                        async: false,
+                        success: function(data) {
+                            alert("changed");
+                        },
+                        cache: false
+                    });
+                }
+
+                else if($(this).find("td:eq(2)").text() == "MINOR"){
+                    $(this).removeClass("danger-minor");
+                    $(this).addClass("danger-cleared-minor");
+                    $.ajax({
+                        url: 'controller/index_page/status_changer.php',
+                        type: "POST",
+                        data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
+                        dataType: "json",
+                        async: false,
+                        success: function(data) {
+                            alert("changed");
+                        },
+                        cache: false
+                    });
+                }
+                else if($(this).find("td:eq(2)").text() == "CRITICAL"){
+                    $(this).removeClass("danger-fraud");
+                    $(this).addClass("danger-cleared-fraud");
+                    $.ajax({
+                        url: 'controller/index_page/status_changer.php',
+                        type: "POST",
+                        data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
+                        dataType: "json",
+                        async: false,
+                        success: function(data) {
+                            alert("changed");
+                        },
+                        cache: false
+                    });
+                }
 
             }
             else if(clickedButton.text() == 'BLOCK'){
@@ -127,11 +127,11 @@ $(document).on('click','.actionbutton', function(){
     let call_to = targetRow[6].substring(1);
     let call_from = targetRow[4];
     let result;
-    if(clickedButton.text() == 'BLOCKED'){
+    if(clickedButton.text() === 'BLOCKED'){
         console.log("BLOCKED BUTTON CLICKED!")
-        // clickedButton.removeClass("btn btn-info");
-        // clickedButton.addClass("btn btn-warning");
-        // clickedButton.text('BLOCK');
+        clickedButton.removeClass("btn btn-info");
+        clickedButton.addClass("btn btn-warning");
+        clickedButton.text('BLOCK');
 
         type = targetRow[1];
         call_to = targetRow[6].substring(1);
@@ -145,26 +145,15 @@ $(document).on('click','.actionbutton', function(){
                 const n = result.includes("RETCODE = 313303");
                 if(n) {
                     console.log("BLOCK хийгдсэн!");
-
-                    let count = 0;
-                    let position = result.indexOf('RETCODE = 0');
-
-                    while (position !== -1) {
-                        count++;
-                        position = result.indexOf('RETCODE = 0', position + 1);
-                    }
-
-                    console.log("COUNT: " + count)  // displays 4
-
                 }else {
                     console.log("BLOCK хийх шаардлагатай!");
                 }
-                console.log(n);
+
             });
         }
 
     }
-    else if(clickedButton.text() == 'BLOCK'){
+    else if(clickedButton.text() === 'BLOCK') {
         console.log("BLOCK BUTTON CLICKED!");
         console.log("ROW: " + targetRow);
         console.log("TYPE: " + targetRow[1]);
@@ -178,18 +167,21 @@ $(document).on('click','.actionbutton', function(){
                 alert("RESULT: " + result);
                 console.log("R: " + result);
 
-                var lines = result.val().split('\n');
-                for(var i = 0;i < lines.length;i++){
-                     console.log("LINE: " + lines[i]);
-                    //code here using lines[i] which will give you each line
+                let count = 0;
+                let position = result.indexOf('RETCODE = 0');
+                while (position !== -1) {
+                    count++;
+                    position = result.indexOf('RETCODE = 0', position + 1);
+                }
+                console.log("COUNT: " + count)
+                if(count === 3) {
+                    clickedButton.removeClass("btn btn-warning");
+                    clickedButton.addClass("btn btn-info");
+                    clickedButton.text('BLOCKED');
                 }
 
-                clickedButton.removeClass("btn btn-warning");
-                clickedButton.addClass("btn btn-info");
-                clickedButton.text('BLOCKED');
             });
         }
-
     }
 });
 $(document).ready(function(){
