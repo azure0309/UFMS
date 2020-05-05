@@ -141,13 +141,12 @@ $(document).on('click','.actionbutton', function(){
             clickedButton.text('Loading...');
             $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
                 result = data;
-                alert("RESULT: " + result);
                 console.log("R: " + result);
-                var lines = result.val().split('\n');
-                for(var i = 0;i < lines.length;i++){
-                    console.log("LINE: " + lines[i]);
-                    //code here using lines[i] which will give you each line
-                }
+
+                var arrayOfLines = result.value.split("\n");
+
+                console.log("wefw: " + arrayOfLines)
+
             });
         }
 
