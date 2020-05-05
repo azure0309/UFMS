@@ -131,7 +131,7 @@ $(document).on('click','.actionbutton', function(){
         console.log("BLOCKED BUTTON CLICKED!")
         clickedButton.removeClass("btn btn-info");
         clickedButton.addClass("btn btn-warning");
-        clickedButton.text('BLOCK');
+        clickedButton.text('Loading...');
 
         type = targetRow[1];
         call_to = targetRow[6].substring(1);
@@ -148,6 +148,9 @@ $(document).on('click','.actionbutton', function(){
                     alert("BLOCK хийгдсэн байна!")
                 }else {
                     console.log("BLOCK хийх шаардлагатай!");
+                    clickedButton.removeClass("btn btn-info");
+                    clickedButton.addClass("btn btn-warning");
+                    clickedButton.text('BLOCK');
                 }
 
             });
@@ -165,7 +168,6 @@ $(document).on('click','.actionbutton', function(){
             clickedButton.text('Loading...');
             $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
                 result = data;
-                alert("RESULT: " + result);
                 console.log("R: " + result);
 
                 let count = 0;
