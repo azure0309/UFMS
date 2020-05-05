@@ -22,7 +22,6 @@ $(document).on('click','.actionbutton', function(){
     let call_from = targetRow[4];
     let result;
 
-
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
@@ -62,6 +61,7 @@ $(document).on('click','.actionbutton', function(){
                     });
                 }
                 else if($(this).find("td:eq(2)").text() == "CRITICAL"){
+                    console.log("CRITICAL ALARM!!!");
                     $(this).removeClass("danger-fraud");
                     $(this).addClass("danger-cleared-fraud");
                     $.ajax({
