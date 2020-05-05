@@ -181,8 +181,8 @@ $(document).on('click','.actionbutton', function(){
                 }
             });
         }
-
     }
+
     else if(clickedButton.text() == 'BLOCKED'){
         console.log("BLOCKED BUTTON CLICKED!")
         if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
