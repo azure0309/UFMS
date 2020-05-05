@@ -164,8 +164,7 @@ $(document).on('click','.actionbutton', function(){
                 url: "https://ufms.uni/Test/controller/index_page/block_action.php",
                 data: {'user_num':call_to },
                 success: function (msg) {
-                    console.log("WEFKHWKLEFWEL" + msg);
-
+                    console.log(msg);
                     let count = 0;
                     let position = msg.indexOf('RETCODE = 0');
                     while (position !== -1) {
@@ -183,20 +182,24 @@ $(document).on('click','.actionbutton', function(){
             });
         }
 
-        // clickedButton.removeClass("btn btn-info");
-        // clickedButton.addClass("btn btn-warning");
-        // clickedButton.text('BLOCKED');
     }
-    // else if(clickedButton.text() == 'BLOCKED'){
-    //     console.log("BLOCKED PRESSED!")
-        // clickedButton.removeClass("btn btn-info");
-        // clickedButton.addClass("btn btn-warning");
-        // clickedButton.text('BLOCKED');
-
-        // clickedButton.removeClass("btn btn-warning");
-        // clickedButton.addClass("btn btn-info");
-        // clickedButton.text('BLOCK');
-    // }
+    else if(clickedButton.text() == 'BLOCKED'){
+        console.log("BLOCKED BUTTON CLICKED!")
+        if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
+            $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
+                result = data;
+                console.log(result);
+                // RETCODE = 313303 Same record exists in Call Rights Check table[ADD CALLPRICHK]
+                const n = result.includes("RETCODE = 313303");
+                if(n) {
+                    console.log("BLOCK хийгдсэн байна!");
+                    alert("BLOCK хийгдсэн байна!")
+                }else {
+                    console.log("BLOCK хийх шаардлагатай!");
+                }
+            });
+        }
+    }
 });
 $(document).ready(function(){
     getTrunkNames();
