@@ -146,12 +146,12 @@ $(document).on('click','.actionbutton', function(){
                 if(n) {
                     console.log("BLOCK хийгдсэн!");
 
-                    let count = 0
-                    let position = result.indexOf('RETCODE = 0')
+                    let count = 0;
+                    let position = result.indexOf('RETCODE = 0');
 
                     while (position !== -1) {
-                        count++
-                        position = str.indexOf('RETCODE = 0', position + 1)
+                        count++;
+                        position = result.indexOf('RETCODE = 0', position + 1);
                     }
 
                     console.log("COUNT: " + count)  // displays 4
