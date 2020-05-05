@@ -313,7 +313,7 @@ function getData(){
                         row.append("<td>" + data[i]["CONTENT"] + "</td>");
                     }
                     row.append("<td>" + data[i]["CREATED"] + "</td>");
-                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCKEDDFDF</button></td>");
+                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCK</button></td>");
                     // row.append("<td><button class='btn btn-sample form-control' id='"+data[i]["ALERT_ID"]+"'>")
                     $("#table-body").append(row);
                     // audio.play();
@@ -360,7 +360,7 @@ function getData(){
                         row.append("<td>" + data[i]["CONTENT"] + "</td>");
                     }
                     row.append("<td>" + data[i]["CREATED"] + "</td>");
-                    row.append("<td><button class='actionbutton form-control btn btn-warning' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCK</button></td>");
+                    row.append("<td><button class='actionbutton form-control btn btn-warning' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCKED</button></td>");
                     $("#table-body").append(row);
                 }
                 ipArray = ["empty", "empty", "empty", "empty"];
