@@ -133,7 +133,8 @@
                     <tr>
                         <td>OD_OUT MANY TO ONE</td>
                         <td>Сүүлийн 1 цагт 1 дугаарлуу 100 - с их амжилттай дуудлага эсвэл 1 дугаарлуу 10 өөр хэрэглэгчээс амжилттай дуудлага гарсан бол</td>
-                        <td>Security Team</td>
+<!--                        <td>Security Team</td>-->
+                        <td>OMC Team Block төлөвт байгаа утгыг Blocked төлөвруу шилжүүлэх. </td>
                     </tr>
                     <tr>
                         <td>OD_IN ONE TO MANY</td>
