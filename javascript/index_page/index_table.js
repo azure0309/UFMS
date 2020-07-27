@@ -18,7 +18,8 @@ $(document).on('click','.actionbutton', function(){
     });
 
     let type = targetRow[1];
-    let call_to = targetRow[6].substring(1);
+    // let call_to = targetRow[6].substring(1);
+    let call_to = targetRow[6];
     let call_from = targetRow[4];
     let result;
 
