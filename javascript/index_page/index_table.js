@@ -183,7 +183,31 @@ $(document).on('click','.actionbutton', function(){
                 }
             });
         }else if(type === 'OD_OUT MANY TO ONE' && call_from != null && call_to === '------') {
-            console.log('CALLFROM : ' + targetRow[4])
+            console.log('CALLFROM = ' + targetRow[4])
+            clickedButton.removeClass("btn btn-info");
+            clickedButton.addClass("btn btn-warning");
+            clickedButton.text('Loading...');
+            $.ajax({
+                type: "GET",
+                url: "https://ufms.uni/Test/controller/index_page/block_callfrom.php",
+                data: {'user_num':call_to },
+                success: function (msg) {
+                    console.log(msg);
+                    let count = 0;
+                    let position = msg.indexOf('RETCODE = 0');
+                    while (position !== -1) {
+                        count++;
+                        position = msg.indexOf('RETCODE = 0', position + 1);
+                    }
+                    console.log("COUNT: " + count);
+                    if(count === 3) {
+                        console.log("TRUE!!!");
+                        clickedButton.removeClass("btn btn-warning");
+                        clickedButton.addClass("btn btn-info");
+                        clickedButton.text('BLOCKED');
+                    }
+                }
+            });
         }
     }
 
