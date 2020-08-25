@@ -156,7 +156,7 @@ $(document).on('click','.actionbutton', function(){
         console.log("TYPE: " + targetRow[1]);
         console.log("CALL_FROM: " + targetRow[4]);
         console.log("CALL_TO: " + call_to);
-
+        
         if(type === 'OD_OUT MANY TO ONE' || type === 'OD_OUT ONE TO MANY: 1 hour' || type === 'OD_OUT MANY TO ONE: 24 hours') {
             if(call_to != null && call_from === '------'){
                 clickedButton.removeClass("btn btn-info");
