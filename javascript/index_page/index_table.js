@@ -17,6 +17,8 @@ $(document).on('click','.actionbutton', function(){
         targetRow.push(textval);
     });
 
+    console.log(targetRow)
+
     let type = targetRow[1];
     // let call_to = targetRow[6].substring(1);
     let call_to = targetRow[6];
@@ -79,7 +81,7 @@ $(document).on('click','.actionbutton', function(){
                 }
 
             }
-            else if(clickedButton.text() == 'BLOCKED')  {
+            else if(clickedButton.text() === 'BLOCKED')  {
 
                 // $.ajax({
                 //     type: "GET",
@@ -184,7 +186,7 @@ $(document).on('click','.actionbutton', function(){
         }
     }
 
-    else if(clickedButton.text() == 'BLOCKED'){
+    else if(clickedButton.text() === 'BLOCKED'){
         console.log("BLOCKED BUTTON CLICKED!")
         if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
             $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
