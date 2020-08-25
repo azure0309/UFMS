@@ -157,58 +157,65 @@ $(document).on('click','.actionbutton', function(){
         console.log("CALL_FROM: " + targetRow[4]);
         console.log("CALL_TO: " + call_to);
 
-        if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
-            clickedButton.removeClass("btn btn-info");
-            clickedButton.addClass("btn btn-warning");
-            clickedButton.text('Loading...');
-            $.ajax({
-                type: "GET",
-                url: "https://ufms.uni/Test/controller/index_page/block_action.php",
-                data: {'user_num':call_to },
-                success: function (msg) {
-                    console.log(msg);
-                    let count = 0;
-                    let position = msg.indexOf('RETCODE = 0');
-                    while (position !== -1) {
-                        count++;
-                        position = msg.indexOf('RETCODE = 0', position + 1);
+        if(type === 'OD_OUT MANY TO ONE' || type === 'OD_OUT ONE TO MANY: 1 hour' || type === 'OD_OUT MANY TO ONE: 24 hours') {
+            if(call_to != null && call_from === '------'){
+                clickedButton.removeClass("btn btn-info");
+                clickedButton.addClass("btn btn-warning");
+                clickedButton.text('Loading...');
+                $.ajax({
+                    type: "GET",
+                    url: "https://ufms.uni/Test/controller/index_page/block_action.php",
+                    data: {'user_num':call_to },
+                    success: function (msg) {
+                        console.log(msg);
+                        let count = 0;
+                        let position = msg.indexOf('RETCODE = 0');
+                        while (position !== -1) {
+                            count++;
+                            position = msg.indexOf('RETCODE = 0', position + 1);
+                        }
+                        console.log("COUNT: " + count);
+                        if(count === 3) {
+                            console.log("TRUE!!!");
+                            clickedButton.removeClass("btn btn-warning");
+                            clickedButton.addClass("btn btn-info");
+                            clickedButton.text('BLOCKED');
+                        }
                     }
-                    console.log("COUNT: " + count);
-                    if(count === 3) {
-                        console.log("TRUE!!!");
-                        clickedButton.removeClass("btn btn-warning");
-                        clickedButton.addClass("btn btn-info");
-                        clickedButton.text('BLOCKED');
+                });
+            }else if(call_from != null && call_to === '------') {
+                console.log('CALLFROM = ' + targetRow[4])
+                clickedButton.removeClass("btn btn-info");
+                clickedButton.addClass("btn btn-warning");
+                clickedButton.text('Loading...');
+                $.ajax({
+                    type: "GET",
+                    url: "https://ufms.uni/Test/controller/index_page/block_callfrom.php",
+                    data: {'user_num':targetRow[4] },
+                    success: function (msg) {
+                        console.log(msg);
+                        let count = 0;
+                        let position = msg.indexOf('RETCODE = 0');
+                        while (position !== -1) {
+                            count++;
+                            position = msg.indexOf('RETCODE = 0', position + 1);
+                        }
+                        console.log("COUNT: " + count);
+                        if(count === 3) {
+                            console.log("TRUE!!!");
+                            clickedButton.removeClass("btn btn-warning");
+                            clickedButton.addClass("btn btn-info");
+                            clickedButton.text('BLOCKED');
+                        }
                     }
-                }
-            });
-        }else if(type === 'OD_OUT MANY TO ONE' && call_from != null && call_to === '------') {
-            console.log('CALLFROM = ' + targetRow[4])
-            clickedButton.removeClass("btn btn-info");
-            clickedButton.addClass("btn btn-warning");
-            clickedButton.text('Loading...');
-            $.ajax({
-                type: "GET",
-                url: "https://ufms.uni/Test/controller/index_page/block_callfrom.php",
-                data: {'user_num':targetRow[4] },
-                success: function (msg) {
-                    console.log(msg);
-                    let count = 0;
-                    let position = msg.indexOf('RETCODE = 0');
-                    while (position !== -1) {
-                        count++;
-                        position = msg.indexOf('RETCODE = 0', position + 1);
-                    }
-                    console.log("COUNT: " + count);
-                    if(count === 3) {
-                        console.log("TRUE!!!");
-                        clickedButton.removeClass("btn btn-warning");
-                        clickedButton.addClass("btn btn-info");
-                        clickedButton.text('BLOCKED');
-                    }
-                }
-            });
+                });
+            }
+        }else {
+            alert("BLOCK хийх шаардлагатай!")
         }
+
+
+
     }
 
     else if(clickedButton.text() === 'BLOCKED'){
