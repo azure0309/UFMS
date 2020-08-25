@@ -82,7 +82,6 @@ $(document).on('click','.actionbutton', function(){
 
             }
             else if(clickedButton.text() === 'BLOCKED')  {
-
                 // $.ajax({
                 //     type: "GET",
                 //     url: "https://ufms.uni/Test/controller/index_page/block_action.php",
