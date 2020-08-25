@@ -190,7 +190,7 @@ $(document).on('click','.actionbutton', function(){
             $.ajax({
                 type: "GET",
                 url: "https://ufms.uni/Test/controller/index_page/block_callfrom.php",
-                data: {'user_num':call_to },
+                data: {'user_num':targetRow[4] },
                 success: function (msg) {
                     console.log(msg);
                     let count = 0;
