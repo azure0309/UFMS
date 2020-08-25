@@ -150,7 +150,7 @@ $(document).on('click','.actionbutton', function(){
 
         }
     });
-    if(clickedButton.text() == 'BLOCK'){
+    if(clickedButton.text() === 'BLOCK'){
         console.log("BLOCK BUTTON CLICKED!");
         console.log("ROW: " + targetRow);
         console.log("TYPE: " + targetRow[1]);
@@ -182,6 +182,8 @@ $(document).on('click','.actionbutton', function(){
                     }
                 }
             });
+        }else if(type === 'OD_OUT MANY TO ONE' && call_from != null && call_to === '------') {
+            console.log('CALLFROM : ' + targetRow[4])
         }
     }
 
