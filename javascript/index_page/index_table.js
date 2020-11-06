@@ -28,12 +28,12 @@ $(document).on('click','.actionbutton', function(){
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
-        if($(this).find('td:eq(0)').text() == beanId){
+        if($(this).find('td:eq(0)').text() === beanId){
             // alert("Equals");
-            if(clickedButton.text() == 'BLOCK'){
+            if(clickedButton.text() === 'BLOCK'){
 
                 console.log("I am not sorry for you");
-                if($(this).find("td:eq(2)").text() == "MAJOR"){
+                if($(this).find("td:eq(2)").text() === "MAJOR"){
                     $(this).removeClass("warning-fraud");
                     $(this).addClass("not-fraud");
                     $.ajax({
@@ -200,8 +200,10 @@ $(document).on('click','.actionbutton', function(){
                     url: "https://ufms.uni/Test/controller/index_page/block_callfrom.php",
                     data: {'user_num':targetRow[4] },
                     success: function (msg) {
+
                         console.log('---------------- RESPONSE ------------')
-                        console.log(msg);
+
+                        console.log('' + msg);
 
                         let count = 0;
                         let position = msg.indexOf('RETCODE = 0');
@@ -222,8 +224,6 @@ $(document).on('click','.actionbutton', function(){
         }else {
             alert("BLOCK хийх шаардлагатай!")
         }
-
-
 
     }
 
