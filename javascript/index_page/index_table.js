@@ -200,7 +200,9 @@ $(document).on('click','.actionbutton', function(){
                     url: "https://ufms.uni/Test/controller/index_page/block_callfrom.php",
                     data: {'user_num':targetRow[4] },
                     success: function (msg) {
+                        console.log('---------------- RESPONSE ------------')
                         console.log(msg);
+
                         let count = 0;
                         let position = msg.indexOf('RETCODE = 0');
                         while (position !== -1) {
