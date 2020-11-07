@@ -201,9 +201,8 @@ $(document).on('click','.actionbutton', function(){
                     data: {'user_num':targetRow[4] },
                     success: function (msg) {
 
-                        console.log('---------------- RESPONSE ------------')
-
-                        console.log('' + msg);
+                        // console.log('---------------- RESPONSE ------------'
+                        // console.log('' + msg);
 
                         let count = 0;
                         let position = msg.indexOf('RETCODE = 0');
