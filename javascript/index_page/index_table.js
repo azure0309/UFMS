@@ -183,6 +183,7 @@ $(document).on('click','.actionbutton', function(){
                         }
                         console.log("COUNT: " + count);
                         // if(count === 3) {
+                        
                             console.log("TRUE!!!");
                             clickedButton.removeClass("btn btn-warning");
                             clickedButton.addClass("btn btn-info");
