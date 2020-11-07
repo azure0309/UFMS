@@ -182,12 +182,12 @@ $(document).on('click','.actionbutton', function(){
                             position = msg.indexOf('RETCODE = 0', position + 1);
                         }
                         console.log("COUNT: " + count);
-                        if(count === 3) {
+                        // if(count === 3) {
                             console.log("TRUE!!!");
                             clickedButton.removeClass("btn btn-warning");
                             clickedButton.addClass("btn btn-info");
                             clickedButton.text('BLOCKED');
-                        }
+                        // }
                     }
                 });
             }else if(call_from != null && call_to === '------') {
@@ -201,7 +201,7 @@ $(document).on('click','.actionbutton', function(){
                     data: {'user_num':targetRow[4] },
                     success: function (msg) {
 
-                        // console.log('---------------- RESPONSE ------------'
+                        // console.log('---------------- RESPONSE ------------')
                         // console.log('' + msg);
 
                         let count = 0;
@@ -211,12 +211,14 @@ $(document).on('click','.actionbutton', function(){
                             position = msg.indexOf('RETCODE = 0', position + 1);
                         }
                         console.log("COUNT: " + count);
-                        if(count === 3) {
+
+                        // if(count === 3) {
                             console.log("TRUE!!!");
                             clickedButton.removeClass("btn btn-warning");
                             clickedButton.addClass("btn btn-info");
                             clickedButton.text('BLOCKED');
-                        }
+                        // }
+
                     }
                 });
             }
