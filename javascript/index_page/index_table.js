@@ -150,6 +150,7 @@ $(document).on('click','.actionbutton', function(){
 
         }
     });
+
     if(clickedButton.text() === 'BLOCK'){
         console.log("BLOCK BUTTON CLICKED!");
         console.log("ROW: " + targetRow);
@@ -174,20 +175,25 @@ $(document).on('click','.actionbutton', function(){
                     url: "https://ufms.uni/Test/controller/index_page/block_action.php",
                     data: {'user_num':call_to },
                     success: function (msg) {
-                        console.log(msg);
-                        let count = 0;
-                        let position = msg.indexOf('RETCODE = 0');
-                        while (position !== -1) {
-                            count++;
-                            position = msg.indexOf('RETCODE = 0', position + 1);
-                        }
-                        console.log("COUNT: " + count);
-                        // if(count === 3) {
-                        
-                            console.log("TRUE!!!");
+                            console.log("")
+                            console.log("BLOCK TRUE!!!"  + msg);
                             clickedButton.removeClass("btn btn-warning");
                             clickedButton.addClass("btn btn-info");
                             clickedButton.text('BLOCKED');
+
+                        // console.log(msg);
+                        // let count = 0;
+                        // let position = msg.indexOf('RETCODE = 0');
+                        // while (position !== -1) {
+                        //     count++;
+                        //     position = msg.indexOf('RETCODE = 0', position + 1);
+                        // }
+                        // console.log("COUNT: " + count);
+                        // if(count === 3) {
+                        //     console.log("TRUE!!!");
+                        //     clickedButton.removeClass("btn btn-warning");
+                        //     clickedButton.addClass("btn btn-info");
+                        //     clickedButton.text('BLOCKED');
                         // }
                     }
                 });
@@ -201,10 +207,8 @@ $(document).on('click','.actionbutton', function(){
                     url: "https://ufms.uni/Test/controller/index_page/block_callfrom.php",
                     data: {'user_num':targetRow[4] },
                     success: function (msg) {
-
                         // console.log('---------------- RESPONSE ------------')
                         // console.log('' + msg);
-
                         let count = 0;
                         let position = msg.indexOf('RETCODE = 0');
                         while (position !== -1) {
@@ -212,14 +216,12 @@ $(document).on('click','.actionbutton', function(){
                             position = msg.indexOf('RETCODE = 0', position + 1);
                         }
                         console.log("COUNT: " + count);
-
-                        // if(count === 3) {
+                        if(count === 3) {
                             console.log("TRUE!!!");
                             clickedButton.removeClass("btn btn-warning");
                             clickedButton.addClass("btn btn-info");
                             clickedButton.text('BLOCKED');
-                        // }
-
+                        }
                     }
                 });
             }
