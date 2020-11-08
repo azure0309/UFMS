@@ -9,6 +9,23 @@ var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 
 $(document).on('click','.actionbutton', function(){
+
+    var targetRow = [];
+    $(this).closest('tr').find('td').each(function() {
+        textval = $(this).text(); // this will be the text of each <td>
+        textval = $(this).text(); // this will be the text of each <td>
+        targetRow.push(textval);
+    });
+
+    console.log(targetRow)
+
+    let type = targetRow[1];
+    // let call_to = targetRow[6].substring(1);
+    let call_to = targetRow[6];
+    let call_from = targetRow[4];
+    let result;
+
+    
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
