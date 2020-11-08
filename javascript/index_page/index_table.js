@@ -15,7 +15,8 @@ $(document).on('click','.actionbutton', function(){
         if($(this).find('td:eq(0)').text() == beanId){
             // alert("Equals");
             if(clickedButton.text() == 'BLOCK'){
-                console.log("I am not sorry for you");
+                // console.log("I am not sorry for you");
+                console.log("ROOT BLOCK BUTTON CLICKED!")
                 if($(this).find("td:eq(2)").text() == "MAJOR"){
                     $(this).removeClass("warning-fraud");
                     $(this).addClass("not-fraud");
@@ -63,7 +64,8 @@ $(document).on('click','.actionbutton', function(){
                 }
             }
             else if(clickedButton.text() == 'BLOCKED'){
-                console.log("I am so sorry");
+                // console.log("I am so sorry");
+                console.log("ROOT BLOCKED BUTTON CLICKED!")
                 if($(this).find("td:eq(2)").text() == "MINOR"){
                     $(this).removeClass("danger-cleared-minor");
                     $(this).addClass("danger-minor");
@@ -116,11 +118,28 @@ $(document).on('click','.actionbutton', function(){
         clickedButton.removeClass("btn btn-info");
         clickedButton.addClass("btn btn-warning");
         clickedButton.text('BLOCKED');
+
+
     }
     else if(clickedButton.text() == 'BLOCKED'){
-        clickedButton.removeClass("btn btn-warning");
-        clickedButton.addClass("btn btn-info");
-        clickedButton.text('BLOCK');
+        // clickedButton.removeClass("btn btn-warning");
+        // clickedButton.addClass("btn btn-info");
+        // clickedButton.text('BLOCK');
+        console.log("BLOCKED BUTTON CLICKED!")
+        if(type === 'OD_OUT MANY TO ONE' && call_to != null && call_from === '------'){
+            $.get("https://ufms.uni/Test/controller/index_page/block_action.php",{'user_num':call_to },function(data){
+                result = data;
+                console.log(result);
+                // RETCODE = 313303 Same record exists in Call Rights Check table[ADD CALLPRICHK]
+                const n = result.includes("RETCODE = 313303");
+                if(n) {
+                    console.log("BLOCK хийгдсэн байна!");
+                    alert("BLOCK хийгдсэн байна!")
+                }else {
+                    console.log("BLOCK хийх шаардлагатай!");
+                }
+            });
+        }
     }
 });
 $(document).ready(function(){
