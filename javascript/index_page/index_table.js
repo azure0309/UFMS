@@ -250,7 +250,7 @@ function getData(){
                     row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>Action</button></td>");
                     // row.append("<td><button class='btn btn-sample form-control' id='"+data[i]["ALERT_ID"]+"'>")
                     $("#table-body").append(row);
-                    audio.play();
+                    // audio.play();
                 }else{
                     if(data[i]["LVL"]==1)
                     {
