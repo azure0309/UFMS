@@ -9,31 +9,14 @@ var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 
 $(document).on('click','.actionbutton', function(){
-
-    var targetRow = [];
-    $(this).closest('tr').find('td').each(function() {
-        textval = $(this).text(); // this will be the text of each <td>
-        textval = $(this).text(); // this will be the text of each <td>
-        targetRow.push(textval);
-    });
-
-    console.log(targetRow)
-
-    let type = targetRow[1];
-    // let call_to = targetRow[6].substring(1);
-    let call_to = targetRow[6];
-    let call_from = targetRow[4];
-    let result;
-
     var beanId = $(this).data('beanId');
     var clickedButton = $(this);
     $('#table-body > tr').each(function(){
-        if($(this).find('td:eq(0)').text() === beanId){
+        if($(this).find('td:eq(0)').text() == beanId){
             // alert("Equals");
-            if(clickedButton.text() === 'BLOCK'){
-
+            if(clickedButton.text() == 'Action'){
                 console.log("I am not sorry for you");
-                if($(this).find("td:eq(2)").text() === "MAJOR"){
+                if($(this).find("td:eq(2)").text() == "MAJOR"){
                     $(this).removeClass("warning-fraud");
                     $(this).addClass("not-fraud");
                     $.ajax({
@@ -64,7 +47,6 @@ $(document).on('click','.actionbutton', function(){
                     });
                 }
                 else if($(this).find("td:eq(2)").text() == "CRITICAL"){
-                    console.log("CRITICAL ALARM!!!");
                     $(this).removeClass("danger-fraud");
                     $(this).addClass("danger-cleared-fraud");
                     $.ajax({
@@ -79,47 +61,67 @@ $(document).on('click','.actionbutton', function(){
                         cache: false
                     });
                 }
-
             }
-            else if(clickedButton.text() === 'BLOCKED')  {
+            else if(clickedButton.text() == 'Reverse'){
                 console.log("I am so sorry");
-
+                if($(this).find("td:eq(2)").text() == "MINOR"){
+                    $(this).removeClass("danger-cleared-minor");
+                    $(this).addClass("danger-minor");
+                    $.ajax({
+                        url: 'controller/index_page/status_changer.php',
+                        type: "POST",
+                        data: {id:$(this).find("td:eq(0)").text(), toggle:'reverse'},
+                        dataType: "json",
+                        async: false,
+                        success: function(data) {
+                            alert("changed");
+                        },
+                        cache: false
+                    });
+                }
+                else if($(this).find("td:eq(2)").text() == "MAJOR"){
+                    $(this).removeClass("not-fraud");
+                    $(this).addClass("warning-fraud");
+                    $.ajax({
+                        url: 'controller/index_page/status_changer.php',
+                        type: "POST",
+                        data: {id:$(this).find("td:eq(0)").text(), toggle:'reverse'},
+                        dataType: "json",
+                        async: false,
+                        success: function(data) {
+                            alert("changed");
+                        },
+                        cache: false
+                    });
+                }
+                else if($(this).find("td:eq(2)").text() == "CRITICAL"){
+                    $(this).removeClass("danger-cleared-fraud");
+                    $(this).addClass("danger-fraud");
+                    $.ajax({
+                        url: 'controller/index_page/status_changer.php',
+                        type: "POST",
+                        data: {id:$(this).find("td:eq(0)").text(), toggle:'reverse'},
+                        dataType: "json",
+                        async: false,
+                        success: function(data) {
+                            alert("changed");
+                        },
+                        cache: false
+                    });
+                }
             }
-
-
         }
     });
-    if(clickedButton.text() === 'BLOCK'){
-        console.log("BLOCK BUTTON CLICKED!");
-        console.log("ROW: " + targetRow);
-        console.log("TYPE: " + targetRow[1]);
-        console.log("CALL_FROM: " + targetRow[4]);
-        console.log("CALL_TO: " + call_to);
-
+    if(clickedButton.text() == 'Action'){
+        clickedButton.removeClass("btn btn-info");
+        clickedButton.addClass("btn btn-warning");
+        clickedButton.text('Reverse');
+    }
+    else if(clickedButton.text() == 'Reverse'){
         clickedButton.removeClass("btn btn-warning");
         clickedButton.addClass("btn btn-info");
-        clickedButton.text('BLOCKED');
-        
-
-        // if(
-        //     type === 'OD_OUT ONE TO MANY: 1 hour' ||
-        //     type === 'OD_OUT MANY TO ONE: 24 hours' ||
-        //     type === 'OD_OUT MANY TO ONE: 1 hour' ||
-        //     type === 'OD_OUT ONE TO MANY: 24 hours'
-        // )
-        // {
-        //
-        // }else {
-        //     alert("BLOCK хийх шаардлагатай!")
-        // }
-
+        clickedButton.text('Action');
     }
-    else if(clickedButton.text() === 'BLOCKED'){
-        console.log("BLOCKED BUTTON CLICKED!")
-
-    }
-
-
 });
 $(document).ready(function(){
     getTrunkNames();
@@ -245,10 +247,10 @@ function getData(){
                         row.append("<td>" + data[i]["CONTENT"] + "</td>");
                     }
                     row.append("<td>" + data[i]["CREATED"] + "</td>");
-                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCK</button></td>");
+                    row.append("<td><button class='actionbutton form-control btn btn-info' data-bean-id='"+data[i]["ALERT_ID"]+"'>Action</button></td>");
                     // row.append("<td><button class='btn btn-sample form-control' id='"+data[i]["ALERT_ID"]+"'>")
                     $("#table-body").append(row);
-                    // audio.play();
+                    audio.play();
                 }else{
                     if(data[i]["LVL"]==1)
                     {
@@ -292,7 +294,7 @@ function getData(){
                         row.append("<td>" + data[i]["CONTENT"] + "</td>");
                     }
                     row.append("<td>" + data[i]["CREATED"] + "</td>");
-                    row.append("<td><button class='actionbutton form-control btn btn-warning' data-bean-id='"+data[i]["ALERT_ID"]+"'>BLOCKED</button></td>");
+                    row.append("<td><button class='actionbutton form-control btn btn-warning' data-bean-id='"+data[i]["ALERT_ID"]+"'>Reverse</button></td>");
                     $("#table-body").append(row);
                 }
                 ipArray = ["empty", "empty", "empty", "empty"];
