@@ -14,7 +14,7 @@ $(document).on('click','.actionbutton', function(){
     $('#table-body > tr').each(function(){
         if($(this).find('td:eq(0)').text() == beanId){
             // alert("Equals");
-            if(clickedButton.text() == 'Action'){
+            if(clickedButton.text() == 'BLOCK'){
                 console.log("I am not sorry for you");
                 if($(this).find("td:eq(2)").text() == "MAJOR"){
                     $(this).removeClass("warning-fraud");
@@ -62,7 +62,7 @@ $(document).on('click','.actionbutton', function(){
                     });
                 }
             }
-            else if(clickedButton.text() == 'Reverse'){
+            else if(clickedButton.text() == 'BLOCKED'){
                 console.log("I am so sorry");
                 if($(this).find("td:eq(2)").text() == "MINOR"){
                     $(this).removeClass("danger-cleared-minor");
@@ -112,15 +112,15 @@ $(document).on('click','.actionbutton', function(){
             }
         }
     });
-    if(clickedButton.text() == 'Action'){
+    if(clickedButton.text() == 'BLOCK'){
         clickedButton.removeClass("btn btn-info");
         clickedButton.addClass("btn btn-warning");
-        clickedButton.text('Reverse');
+        clickedButton.text('BLOCKED');
     }
-    else if(clickedButton.text() == 'Reverse'){
+    else if(clickedButton.text() == 'BLOCKED'){
         clickedButton.removeClass("btn btn-warning");
         clickedButton.addClass("btn btn-info");
-        clickedButton.text('Action');
+        clickedButton.text('BLOCK');
     }
 });
 $(document).ready(function(){
