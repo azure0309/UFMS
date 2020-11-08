@@ -96,6 +96,11 @@ $(document).on('click','.actionbutton', function(){
         console.log("CALL_FROM: " + targetRow[4]);
         console.log("CALL_TO: " + call_to);
 
+        clickedButton.removeClass("btn btn-warning");
+        clickedButton.addClass("btn btn-info");
+        clickedButton.text('BLOCKED');
+        
+
         // if(
         //     type === 'OD_OUT ONE TO MANY: 1 hour' ||
         //     type === 'OD_OUT MANY TO ONE: 24 hours' ||
