@@ -145,7 +145,9 @@ $(document).on('click','.actionbutton', function(){
             type === 'OD_OUT ONE TO MANY: 1 hour' ||
             type === 'OD_OUT MANY TO ONE: 24 hours' ||
             type === 'OD_OUT MANY TO ONE: 1 hour' ||
-            type === 'OD_OUT ONE TO MANY: 24 hours'
+            type === 'OD_OUT ONE TO MANY: 24 hours' ||
+            type === 'OD_OUT MANY TO ONE: 6 hours' ||
+            type === 'OD_OUT MANY TO ONE: 3 hours'
         )
         {
             if(call_to != null && call_from === '------'){
