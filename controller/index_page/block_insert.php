@@ -19,9 +19,11 @@ if($toggle == 'action'){
 //    $sql = "INSERT INTO od_alert_cmd(arg2,arg4) '.
 //        'VALUES('$callfrom', '$callto')";
 
-//    $sql ="insert into od_alert_cmd(arg2,arg4) values ('$callfrom', '$callto')";
-    $sql = 'INSERT INTO od_alert_cmd(type) '.
-        'VALUES(:callfrom)';
+//    $sql = 'INSERT INTO od_alert_cmd(type) '.
+//        'VALUES(:callfrom)';
+
+    $sql="insert into od_alert_cmd(type,Url_Name) 
+            VALUES( 9,\".'{$callfrom}'.\")";
 
     $stid = oci_parse($conn, $sql);
 
