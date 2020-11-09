@@ -24,11 +24,14 @@ if($toggle == 'action'){
 
 //    $sql="insert into od_alert_cmd(type,arg2,arg4) VALUES('".'{callfrom}'."','".'{callto}'."','".'{callto}'."')";
 
-    // Insert the date into mytable
-    $sql = oci_parse($conn,
-        "insert into od_alert_cmd(type,arg2,arg4) values (5,'" . $callfrom . "','" . $callto . "')");
+    $sql = 'INSERT INTO od_alert_cmd(type,arg2,arg4) '.
+        'VALUES(9, :callfrom, :callto)';
 
     $stid = oci_parse($conn, $sql);
+
+//    oci_bind_by_name($stid, ':url', $url_name);
+    oci_bind_by_name($stid, ':callfrom', $callfrom);
+    oci_bind_by_name($stid, ':callto', $callto);
 
 }
 else if($toggle == 'reverse'){
