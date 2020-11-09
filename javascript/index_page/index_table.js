@@ -9,14 +9,14 @@ var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 
 
-function RemoveSpecialChar($str) {
+function RemoveSpecialChar(str) {
 
     // Using str_replace() function
     // to replace the word
-    $res = str_replace( array( '+'), '', $str);
+    let res = str_replace( array( '+'), '', str);
 
     // Returning the result
-    return $res;
+    return res;
 }
 
 $(document).on('click','.actionbutton', function(){
