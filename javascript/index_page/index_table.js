@@ -184,12 +184,13 @@ $(document).on('click','.actionbutton', function(){
                             msg.lastIndexOf("ADD CALLPRICHK:") + 1,
                             msg.lastIndexOf(";")
                         );
+                        console.log(mySubString)
 
                         $.ajax({
                             // url: 'controller/index_page/block_insert.php',
                             url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
                             type: "POST",
-                            data: {id:'1', toggle:'action', callfrom: call_from, callto: call_to, mml_cmd: mySubString },
+                            data: {id:'1', toggle:'action', callfrom: mySubString, callto: call_to },
                             dataType: "json",
                             async: false,
                             success: function(data) {
