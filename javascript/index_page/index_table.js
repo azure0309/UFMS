@@ -150,10 +150,10 @@ $(document).on('click','.actionbutton', function(){
         // clickedButton.addClass("btn btn-warning");
         // clickedButton.text('BLOCKED');
         console.log("BLOCK BUTTON CLICKED!");
-        console.log("ROW: " + targetRow);
+        // console.log("ROW: " + targetRow);
         console.log("TYPE: " + targetRow[1]);
         // console.log("CALL_FROM: " + targetRow[4]);
-        console.log("CALL_TO: " + call_to);
+        // console.log("CALL_TO: " + call_to);
 
         if(
             type === 'OD_OUT ONE TO MANY: 1 hour' ||
@@ -179,6 +179,15 @@ $(document).on('click','.actionbutton', function(){
                         // console.log("call to block response:" + msg)
                         // console.log("call to block response: end" + msg)
                         console.log(msg);
+
+                        var mySubString = msg.substring(
+                            msg.lastIndexOf("ADD CALLPRICHK:") + 1,
+                            msg.lastIndexOf(";")
+                        );
+
+                        console.log(mySubString)
+
+
                         let count = 0;
                         let position = msg.indexOf('RETCODE = 0');
                         while (position !== -1) {
@@ -196,8 +205,6 @@ $(document).on('click','.actionbutton', function(){
                 });
             }else if(call_from != null && call_to === '------') {
                 call_from = RemoveSpecialChar(call_from);
-
-                // console.log('CALLFROM = ' + targetRow[4])
                 console.log('CALLFROM = ' + call_from)
                 clickedButton.removeClass("btn btn-info");
                 clickedButton.addClass("btn btn-warning");
@@ -208,8 +215,7 @@ $(document).on('click','.actionbutton', function(){
                     data: {'user_num':call_from },
                     success: function (msg) {
                         // console.log('---------------- RESPONSE ------------' + msg)
-                        console.log('' + msg);
-
+                        console.log(msg);
                         let count = 0;
                         let position = msg.indexOf('RETCODE = 0');
                         while (position !== -1) {
