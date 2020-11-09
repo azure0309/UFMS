@@ -185,12 +185,22 @@ $(document).on('click','.actionbutton', function(){
                             msg.lastIndexOf(";")
                         );
                         console.log(mySubString)
+                        var PFX = msg.substring(
+                            msg.lastIndexOf("PFX=") + 1,
+                            msg.lastIndexOf(",")
+                        );
+                        var CPFX = msg.substring(
+                            msg.lastIndexOf("CPFX=") + 1,
+                            msg.lastIndexOf(",")
+                        );
+                        console.log(PFX)
+                        console.log(CPFX)
 
                         $.ajax({
                             // url: 'controller/index_page/block_insert.php',
                             url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
                             type: "POST",
-                            data: {id:'1', toggle:'action', callfrom: mySubString, callto: call_to },
+                            data: {id:'1', toggle:'action', callfrom: PFX, callto: CPFX },
                             dataType: "json",
                             async: false,
                             success: function(data) {
