@@ -176,8 +176,10 @@ $(document).on('click','.actionbutton', function(){
                     url: "https://ufms.uni/Test/controller/index_page/block_action.php",
                     data: {'user_num':call_to },
                     success: function (msg) {
+                        debugger;
+                        
                         console.log("call to block response:" + msg)
-                        console.log("call to block response: end" + msg)
+                        // console.log("call to block response: end" + msg)
                         console.log(msg);
                         let count = 0;
                         let position = msg.indexOf('RETCODE = 0');
