@@ -193,6 +193,7 @@ $(document).on('click','.actionbutton', function(){
                             async: false,
                             success: function(data) {
                                 alert("changed");
+                                console.log("insert changed")
                             },
                             cache: false
                         });
