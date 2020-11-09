@@ -185,13 +185,13 @@ $(document).on('click','.actionbutton', function(){
                             msg.lastIndexOf(";")
                         );
                         console.log(mySubString)
-                        var PFX = msg.substring(
-                            msg.lastIndexOf(", PFX=") + 1,
-                            msg.lastIndexOf(",")
+                        var PFX = mySubString.substring(
+                            mySubString.lastIndexOf("PFX=") + 1,
+                            mySubString.lastIndexOf(",")
                         );
-                        var CPFX = msg.substring(
-                            msg.lastIndexOf(", CPFX=") + 1,
-                            msg.lastIndexOf(",")
+                        var CPFX = mySubString.substring(
+                            mySubString.lastIndexOf("CPFX=") + 1,
+                            mySubString.lastIndexOf(",")
                         );
                         console.log(PFX)
                         console.log(CPFX)
