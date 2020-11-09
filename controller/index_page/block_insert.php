@@ -16,8 +16,8 @@ if($toggle == 'action'){
 //    $stid = oci_parse($conn, "UPDATE OD_ALERT SET STATUS = 1 WHERE ALERT_ID = ".$id."");
 //    $stid = oci_parse($conn, "UPDATE OD_ALERT SET STATUS = 1 WHERE ALERT_ID = ".$id."");
 
-    $sql = 'INSERT INTO od_alert_cmd(arg2,arg4) '.
-        'VALUES(:callfrom, :callto)';
+    $sql = "INSERT INTO od_alert_cmd(arg2,arg4) '.
+        'VALUES('$callfrom', '$callto')";
 
     $stid = oci_parse($conn, $sql);
 
