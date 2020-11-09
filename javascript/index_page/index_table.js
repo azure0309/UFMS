@@ -186,11 +186,11 @@ $(document).on('click','.actionbutton', function(){
                         );
                         console.log(mySubString)
                         var PFX = msg.substring(
-                            msg.lastIndexOf("PFX=") + 1,
+                            msg.lastIndexOf(", PFX=") + 1,
                             msg.lastIndexOf(",")
                         );
                         var CPFX = msg.substring(
-                            msg.lastIndexOf("CPFX=") + 1,
+                            msg.lastIndexOf(", CPFX=") + 1,
                             msg.lastIndexOf(",")
                         );
                         console.log(PFX)
