@@ -176,7 +176,6 @@ $(document).on('click','.actionbutton', function(){
                     url: "https://ufms.uni/Test/controller/index_page/block_action.php",
                     data: {'user_num':call_to },
                     success: function (msg) {
-                        debugger;
                         // console.log("call to block response:" + msg)
                         // console.log("call to block response: end" + msg)
                         console.log(msg);
@@ -196,12 +195,6 @@ $(document).on('click','.actionbutton', function(){
                     }
                 });
             }else if(call_from != null && call_to === '------') {
-
-                // if (str_contains(call_from, '+')) {
-                    // call_from = targetRow[6].substring(1);
-                    // console.log("YES IT IS CONTAIN +")
-                // }
-
                 call_from = RemoveSpecialChar(call_from);
 
                 // console.log('CALLFROM = ' + targetRow[4])
@@ -214,8 +207,7 @@ $(document).on('click','.actionbutton', function(){
                     url: "https://ufms.uni/Test/controller/index_page/block_callfrom.php",
                     data: {'user_num':call_from },
                     success: function (msg) {
-
-                        console.log('---------------- RESPONSE ------------' + msg)
+                        // console.log('---------------- RESPONSE ------------' + msg)
                         console.log('' + msg);
 
                         let count = 0;
