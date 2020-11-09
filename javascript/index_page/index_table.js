@@ -152,7 +152,7 @@ $(document).on('click','.actionbutton', function(){
         console.log("BLOCK BUTTON CLICKED!");
         console.log("ROW: " + targetRow);
         console.log("TYPE: " + targetRow[1]);
-        console.log("CALL_FROM: " + targetRow[4]);
+        // console.log("CALL_FROM: " + targetRow[4]);
         console.log("CALL_TO: " + call_to);
 
         if(
@@ -176,6 +176,7 @@ $(document).on('click','.actionbutton', function(){
                     url: "https://ufms.uni/Test/controller/index_page/block_action.php",
                     data: {'user_num':call_to },
                     success: function (msg) {
+                        console.log("call to block response " + msg)
                         console.log(msg);
                         let count = 0;
                         let position = msg.indexOf('RETCODE = 0');
@@ -213,7 +214,6 @@ $(document).on('click','.actionbutton', function(){
                     success: function (msg) {
 
                         console.log('---------------- RESPONSE ------------')
-
                         console.log('' + msg);
 
                         let count = 0;
