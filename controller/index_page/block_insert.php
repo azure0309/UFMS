@@ -22,7 +22,11 @@ if($toggle == 'action'){
 //    $sql = 'INSERT INTO od_alert_cmd(type) '.
 //        'VALUES(:callfrom)';
 
-    $sql="insert into od_alert_cmd(type,arg2,arg4) VALUES('".'{callfrom}'."','".'{callto}'."','".'{callto}'."')";
+//    $sql="insert into od_alert_cmd(type,arg2,arg4) VALUES('".'{callfrom}'."','".'{callto}'."','".'{callto}'."')";
+
+    // Insert the date into mytable
+    $sql = oci_parse($conn,
+        "insert into od_alert_cmd(type,arg2,arg4) values (5,'" . $callfrom . "','" . $callto . "')");
 
     $stid = oci_parse($conn, $sql);
 
