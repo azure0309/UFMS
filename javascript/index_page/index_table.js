@@ -13,10 +13,12 @@ function RemoveSpecialChar(str) {
 
     // Using str_replace() function
     // to replace the word
-    let res = str_replace( array( '+'), '', str);
+    // let res = str_replace( array( '+'), '', str);
+    // let res = str.replace()
+    str = str.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
 
     // Returning the result
-    return res;
+    return str;
 }
 
 $(document).on('click','.actionbutton', function(){
