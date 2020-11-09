@@ -13,7 +13,7 @@ if($toggle == 'action'){
 //    $stid = oci_parse($conn, "UPDATE OD_ALERT SET STATUS = 1 WHERE ALERT_ID = ".$id."");
 
     $sql = 'INSERT INTO od_alert_cmd(p1) '.
-        'VALUES(9, testwefwef)';
+        'VALUES(9)';
 
     $stid = oci_parse($conn, $sql);
 

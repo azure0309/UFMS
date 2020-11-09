@@ -186,9 +186,10 @@ $(document).on('click','.actionbutton', function(){
                         );
 
                         $.ajax({
-                            url: 'controller/index_page/block_insert.php',
+                            // url: 'controller/index_page/block_insert.php',
+                            url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
                             type: "POST",
-                            data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
+                            data: {id:'1', toggle:'action'},
                             dataType: "json",
                             async: false,
                             success: function(data) {
