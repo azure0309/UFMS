@@ -5,7 +5,7 @@ $toggle = $_POST["toggle"];
 
 $callfrom= $_POST["callfrom"];
 $callto = $_POST["callto"];
-$mml_cmd = $_POST["mml"];
+$mml_cmd = $_POST["mml_cmd"];
 
 
 header('Content-type:application/json');
