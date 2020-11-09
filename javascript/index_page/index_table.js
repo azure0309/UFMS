@@ -8,6 +8,17 @@ var countryNameArray = ["empty", "empty", "empty", "empty"];
 var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 
+
+function RemoveSpecialChar($str) {
+
+    // Using str_replace() function
+    // to replace the word
+    $res = str_replace( array( '+'), '', $str);
+
+    // Returning the result
+    return $res;
+}
+
 $(document).on('click','.actionbutton', function(){
 
     var targetRow = [];
@@ -148,8 +159,10 @@ $(document).on('click','.actionbutton', function(){
             type === 'OD_OUT MANY TO ONE: 1 hour' ||
             type === 'OD_OUT ONE TO MANY: 24 hours' ||
             type === 'OD_OUT MANY TO ONE: 6 hours' ||
+            type === 'OD_OUT ONE TO MANY: 6 hour' ||
             type === 'OD_OUT MANY TO ONE: 3 hours' ||
-            type === 'OD_OUT ONE TO MANY: 24 hour'
+            type === 'OD_OUT ONE TO MANY: 24 hour' ||
+            type === 'OD_OUT ONE TO MANY: 3 hour'
         )
         {
             if(call_to != null && call_from === '------'){
@@ -180,8 +193,11 @@ $(document).on('click','.actionbutton', function(){
             }else if(call_from != null && call_to === '------') {
 
                 if (str_contains(call_from, '+')) {
-                    call_from = targetRow[6].substring(1);
+                    // call_from = targetRow[6].substring(1);
+                    console.log("YES IT IS CONTAIN +")
                 }
+
+                call_from = RemoveSpecialChar(call_from);
 
                 // console.log('CALLFROM = ' + targetRow[4])
                 console.log('CALLFROM = ' + call_from)
