@@ -192,10 +192,10 @@ $(document).on('click','.actionbutton', function(){
                 });
             }else if(call_from != null && call_to === '------') {
 
-                if (str_contains(call_from, '+')) {
+                // if (str_contains(call_from, '+')) {
                     // call_from = targetRow[6].substring(1);
-                    console.log("YES IT IS CONTAIN +")
-                }
+                    // console.log("YES IT IS CONTAIN +")
+                // }
 
                 call_from = RemoveSpecialChar(call_from);
 
