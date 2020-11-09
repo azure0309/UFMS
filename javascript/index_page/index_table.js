@@ -185,14 +185,16 @@ $(document).on('click','.actionbutton', function(){
                             msg.lastIndexOf(";")
                         );
                         console.log(mySubString)
-                        var PFX = mySubString.substring(
-                            mySubString.lastIndexOf("PFX=") + 1,
-                            mySubString.lastIndexOf(",")
-                        );
-                        var CPFX = mySubString.substring(
-                            mySubString.lastIndexOf("CPFX=") + 1,
-                            mySubString.lastIndexOf(",")
-                        );
+                        var PFX = mySubString.split('PFX=').pop().split(',')[0]; // returns 'two'
+                        var CPFX = mySubString.split('CPFX=').pop().split(',')[0]; // returns 'two'
+                        // var PFX = mySubString.substring(
+                        //     mySubString.lastIndexOf("PFX=") + 1,
+                        //     mySubString.lastIndexOf(",")
+                        // );
+                        // var CPFX = mySubString.substring(
+                        //     mySubString.lastIndexOf("CPFX=") + 1,
+                        //     mySubString.lastIndexOf(",")
+                        // );
                         console.log(PFX)
                         console.log(CPFX)
 
