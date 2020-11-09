@@ -185,6 +185,18 @@ $(document).on('click','.actionbutton', function(){
                             msg.lastIndexOf(";")
                         );
 
+                        $.ajax({
+                            url: 'controller/index_page/block_insert.php',
+                            type: "POST",
+                            data: {id:$(this).find("td:eq(0)").text(), toggle:'action'},
+                            dataType: "json",
+                            async: false,
+                            success: function(data) {
+                                alert("changed");
+                            },
+                            cache: false
+                        });
+
                         console.log(mySubString)
 
 
