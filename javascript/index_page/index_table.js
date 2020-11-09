@@ -177,14 +177,20 @@ $(document).on('click','.actionbutton', function(){
                     }
                 });
             }else if(call_from != null && call_to === '------') {
-                console.log('CALLFROM = ' + targetRow[4])
+
+                if (str_contains(call_from, '+')) {
+                    call_from = targetRow[6].substring(1);
+                }
+
+                // console.log('CALLFROM = ' + targetRow[4])
+                console.log('CALLFROM = ' + call_from)
                 clickedButton.removeClass("btn btn-info");
                 clickedButton.addClass("btn btn-warning");
                 clickedButton.text('Loading...');
                 $.ajax({
                     type: "GET",
                     url: "https://ufms.uni/Test/controller/index_page/block_callfrom.php",
-                    data: {'user_num':targetRow[4] },
+                    data: {'user_num':call_from },
                     success: function (msg) {
 
                         console.log('---------------- RESPONSE ------------')
