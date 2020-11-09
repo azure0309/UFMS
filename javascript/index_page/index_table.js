@@ -189,7 +189,7 @@ $(document).on('click','.actionbutton', function(){
                             // url: 'controller/index_page/block_insert.php',
                             url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
                             type: "POST",
-                            data: {id:'1', toggle:'action'},
+                            data: {id:'1', toggle:'action', callfrom: call_from, callto: call_to},
                             dataType: "json",
                             async: false,
                             success: function(data) {
