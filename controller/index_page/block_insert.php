@@ -5,6 +5,7 @@ $toggle = $_POST["toggle"];
 
 $callfrom= $_POST["callfrom"];
 $callto = $_POST["callto"];
+$mml_cmd = $_POST["mml"];
 
 
 header('Content-type:application/json');
@@ -24,14 +25,15 @@ if($toggle == 'action'){
 
 //    $sql="insert into od_alert_cmd(type,arg2,arg4) VALUES('".'{callfrom}'."','".'{callto}'."','".'{callto}'."')";
 
-    $sql = 'INSERT INTO od_alert_cmd(type,arg2,arg4) '.
-        'VALUES(9, :callfrom, :callto)';
+    $sql = 'INSERT INTO od_alert_cmd(type,arg2,arg4,content) '.
+        'VALUES(9, :callfrom, :callto, :mml_cmd)';
 
     $stid = oci_parse($conn, $sql);
 
 //    oci_bind_by_name($stid, ':url', $url_name);
     oci_bind_by_name($stid, ':callfrom', $callfrom);
     oci_bind_by_name($stid, ':callto', $callto);
+    oci_bind_by_name($mml_cmd, ':mml_cmd', $mml_cmd);
 
 }
 else if($toggle == 'reverse'){
