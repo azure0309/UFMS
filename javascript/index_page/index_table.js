@@ -177,8 +177,7 @@ $(document).on('click','.actionbutton', function(){
                     data: {'user_num':call_to },
                     success: function (msg) {
                         debugger;
-                        
-                        console.log("call to block response:" + msg)
+                        // console.log("call to block response:" + msg)
                         // console.log("call to block response: end" + msg)
                         console.log(msg);
                         let count = 0;
