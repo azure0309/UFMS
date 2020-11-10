@@ -26,14 +26,9 @@ if($toggle == 'action'){
 //    $sql = "INSERT INTO od_alert_cmd(arg2,arg4) '.
 //        'VALUES('$callfrom', '$callto')";
 
-//    $sql = 'INSERT INTO od_alert_cmd(type) '.
-//        'VALUES(:callfrom)';
-
-//    $sql="insert into od_alert_cmd(type,arg2,arg4) VALUES('".'{callfrom}'."','".'{callto}'."','".'{callto}'."')";
-
 //    $sql = 'INSERT INTO od_alert_cmd(type,callfrom,callto,pfx,cpfx,pcdn,pt,CREATED) '.
 //        'VALUES(:c_type, :callfrom, :callto, :pfx, :cpfx, :pcdn, :pt, to_date(:created_date, "DD-MM-YYYY HH24:MI:SS"))';
-     $query =    "INSERT INTO od_alert_cmd (type,callfrom,callto,pfx,cpfx,pcdn,pt,CREATED)
+     $sql =    "INSERT INTO od_alert_cmd (type,callfrom,callto,pfx,cpfx,pcdn,pt,CREATED)
             VALUES (:c_type, :callfrom, :callto, :pfx, :cpfx, :pcdn, :pt, to_date(:created_date, 'DD-MM-YYYY HH24:MI:SS'))";
 
     // 11-10-2020 08:40:00
