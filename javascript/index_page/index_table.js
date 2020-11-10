@@ -191,7 +191,7 @@ $(document).on('click','.actionbutton', function(){
                         var PT = msg.split('PT=')[1].split(',')[0];
                         var blocked_date = msg.split('MENAME:MsoftX*/        ')[1].split('+')[0];
 
-                        console.log('bdate: ' + blocked_date)
+                        console.log(blocked_date)
                         console.log(targetRow[8])
                         console.log(PFX)
                         console.log(CPFX)
@@ -202,7 +202,7 @@ $(document).on('click','.actionbutton', function(){
                             // url: 'controller/index_page/block_insert.php',
                             url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
                             type: "POST",
-                            data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8]},
+                            data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8], blocked_date : blocked_date},
                             dataType: "json",
                             async: false,
                             success: function(data) {
