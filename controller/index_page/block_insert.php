@@ -34,7 +34,7 @@ if($toggle == 'action'){
     $stid = oci_parse($conn, $sql);
 
 //    oci_bind_by_name($stid, ':url', $url_name);
-    oci_bind_by_name($stid, ':type', $c_type);
+    oci_bind_by_name($stid, ':c_type', $c_type);
     oci_bind_by_name($stid, ':callfrom', $callfrom);
     oci_bind_by_name($stid, ':callto', $callto);
     oci_bind_by_name($stid, ':pfx', $pfx);
