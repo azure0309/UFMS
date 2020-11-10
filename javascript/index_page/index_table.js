@@ -178,25 +178,12 @@ $(document).on('click','.actionbutton', function(){
                     url: "https://ufms.uni/Test/controller/index_page/block_action.php",
                     data: {'user_num':call_to },
                     success: function (msg) {
-                        // console.log("call to block response:" + msg)
-                        // console.log("call to block response: end" + msg)
-                        // console.log(msg);
+                        console.log(msg);
 
                         // var PFX = msg.substring(
                         //     msg.lastIndexOf("CSCNAME=\"ALL\", ") + 1,
                         //     msg.lastIndexOf(", CPFX")
                         // );
-                        // var CPFX = msg.substring(
-                        //     msg.lastIndexOf("CPFX=") + 1,
-                        //     msg.lastIndexOf(", PCDN")
-                        // );
-
-                        // let dtStr = "12/03/2010 09:55:35"
-                        let dtStr = "11-10-2020 08:40:00"
-
-
-                        console.log('CREATED DATE: ' + strToDate(dtStr));  // Fri Mar 12 2010 09:55:35
-
 
                         var PFX = msg.split(', PFX=')[1].split(',')[0];
                         var CPFX = msg.split(', CPFX=')[1].split(',')[0];

@@ -23,9 +23,6 @@ if($toggle == 'action'){
 //    $stid = oci_parse($conn, "UPDATE OD_ALERT SET STATUS = 1 WHERE ALERT_ID = ".$id."");
 //    $stid = oci_parse($conn, "UPDATE OD_ALERT SET STATUS = 1 WHERE ALERT_ID = ".$id."");
 
-//    $sql = "INSERT INTO od_alert_cmd(arg2,arg4) '.
-//        'VALUES('$callfrom', '$callto')";
-
 //    $sql = 'INSERT INTO od_alert_cmd(type,callfrom,callto,pfx,cpfx,pcdn,pt,CREATED) '.
 //        'VALUES(:c_type, :callfrom, :callto, :pfx, :cpfx, :pcdn, :pt, to_date(:created_date, "DD-MM-YYYY HH24:MI:SS"))';
      $sql =    "INSERT INTO od_alert_cmd (type,callfrom,callto,pfx,cpfx,pcdn,pt,CREATED)
