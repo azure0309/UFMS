@@ -8,6 +8,13 @@ var countryNameArray = ["empty", "empty", "empty", "empty"];
 var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 
+function strToDate(dtStr) {
+    let dateParts = dtStr.split("-");
+    let timeParts = dateParts[2].split(" ")[1].split(":");
+    dateParts[2] = dateParts[2].split(" ")[0];
+    // month is 0-based, that's why we need dataParts[1] - 1
+    return dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0], timeParts[0], timeParts[1], timeParts[2]);
+}
 
 function RemoveSpecialChar(str) {
     str = str.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
@@ -182,6 +189,14 @@ $(document).on('click','.actionbutton', function(){
                         //     msg.lastIndexOf("CPFX=") + 1,
                         //     msg.lastIndexOf(", PCDN")
                         // );
+
+                        // let dtStr = "12/03/2010 09:55:35"
+                        let dtStr = "11-10-2020 08:40:00"
+
+                        // 11-10-2020 08:40:00
+
+                        console.log('CREATED DATE: ' + strToDate(dtStr));  // Fri Mar 12 2010 09:55:35
+
 
                         var PFX = msg.split(', PFX=')[1].split(',')[0];
                         var CPFX = msg.split(', CPFX=')[1].split(',')[0];
