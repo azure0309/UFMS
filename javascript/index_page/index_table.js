@@ -180,13 +180,22 @@ $(document).on('click','.actionbutton', function(){
                         // console.log("call to block response: end" + msg)
                         console.log(msg);
 
-                        var mySubString = msg.substring(
-                            msg.lastIndexOf("ADD CALLPRICHK:") + 1,
-                            msg.lastIndexOf(";")
+                        var PFX = msg.substring(
+                            msg.lastIndexOf("PFX=") + 1,
+                            msg.lastIndexOf(",")
                         );
-                        console.log(mySubString)
-                        var PFX = mySubString.split('PFX=').pop().split(',')[0]; // returns 'two'
-                        var CPFX = mySubString.split('CPFX=').pop().split(',')[0]; // returns 'two'
+                        var CPFX = msg.substring(
+                            msg.lastIndexOf("CPFX=") + 1,
+                            msg.lastIndexOf(",")
+                        );
+
+                        // var mySubString = msg.substring(
+                        //     msg.lastIndexOf("ADD CALLPRICHK:") + 1,
+                        //     msg.lastIndexOf(";")
+                        // );
+                        // console.log(mySubString)
+                        // var PFX = mySubString.split('PFX=').pop().split(',')[0]; // returns 'two'
+                        // var CPFX = mySubString.split('CPFX=').pop().split(',')[0]; // returns 'two'
                         // var PFX = mySubString.substring(
                         //     mySubString.lastIndexOf("PFX=") + 1,
                         //     mySubString.lastIndexOf(",")
