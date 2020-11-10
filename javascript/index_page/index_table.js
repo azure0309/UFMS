@@ -172,7 +172,7 @@ $(document).on('click','.actionbutton', function(){
                     success: function (msg) {
                         // console.log("call to block response:" + msg)
                         // console.log("call to block response: end" + msg)
-                        console.log(msg);
+                        // console.log(msg);
 
                         // var PFX = msg.substring(
                         //     msg.lastIndexOf("CSCNAME=\"ALL\", ") + 1,
@@ -188,7 +188,7 @@ $(document).on('click','.actionbutton', function(){
                         var PCDN = msg.split('PCDN="')[1].split('",')[0];
                         var PT = msg.split('PT=')[1].split(',')[0];
 
-
+                        console.log(targetRow[8])
                         console.log(PFX)
                         console.log(CPFX)
                         console.log(PCDN)
