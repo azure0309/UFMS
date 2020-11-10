@@ -10,13 +10,7 @@ var countryCodeArray = ["empty", "empty", "empty", "empty"];
 
 
 function RemoveSpecialChar(str) {
-
-    // Using str_replace() function
-    // to replace the word
-    // let res = str_replace( array( '+'), '', str);
-    // let res = str.replace()
     str = str.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
-
     // Returning the result
     return str;
 }
@@ -150,7 +144,7 @@ $(document).on('click','.actionbutton', function(){
         // clickedButton.addClass("btn btn-warning");
         // clickedButton.text('BLOCKED');
         console.log("BLOCK BUTTON CLICKED!");
-        // console.log("ROW: " + targetRow);
+        console.log("ROW: " + targetRow);
         console.log("TYPE: " + targetRow[1]);
         // console.log("CALL_FROM: " + targetRow[4]);
         // console.log("CALL_TO: " + call_to);
