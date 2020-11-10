@@ -180,14 +180,17 @@ $(document).on('click','.actionbutton', function(){
                         // console.log("call to block response: end" + msg)
                         console.log(msg);
 
-                        var PFX = msg.substring(
-                            msg.lastIndexOf("CSCNAME=\"ALL\", ") + 1,
-                            msg.lastIndexOf(", CPFX")
-                        );
-                        var CPFX = msg.substring(
-                            msg.lastIndexOf("CPFX=") + 1,
-                            msg.lastIndexOf(", PCDN")
-                        );
+                        // var PFX = msg.substring(
+                        //     msg.lastIndexOf("CSCNAME=\"ALL\", ") + 1,
+                        //     msg.lastIndexOf(", CPFX")
+                        // );
+                        // var CPFX = msg.substring(
+                        //     msg.lastIndexOf("CPFX=") + 1,
+                        //     msg.lastIndexOf(", PCDN")
+                        // );
+
+                        var PFX = msg.split(', PFX=')[1].split(',')[0];
+                        var CPFX = msg.split(', CPFX=')[1].split(',')[0];
 
                         // var mySubString = msg.substring(
                         //     msg.lastIndexOf("ADD CALLPRICHK:") + 1,
