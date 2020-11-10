@@ -3,9 +3,12 @@
 $id = $_POST["id"];
 $toggle = $_POST["toggle"];
 
+$c_type = $_POST["c_type"];
 $callfrom= $_POST["callfrom"];
 $callto = $_POST["callto"];
-//$mml_cmd = $_POST["mml_cmd"];
+$pfx = $_POST["pfx"];
+$cpfx = $_POST["cpfx"];
+
 
 
 header('Content-type:application/json');
@@ -25,14 +28,17 @@ if($toggle == 'action'){
 
 //    $sql="insert into od_alert_cmd(type,arg2,arg4) VALUES('".'{callfrom}'."','".'{callto}'."','".'{callto}'."')";
 
-    $sql = 'INSERT INTO od_alert_cmd(type,arg3,arg4) '.
-        'VALUES(5, :callfrom, :callto)';
+    $sql = 'INSERT INTO od_alert_cmd(type,arg1,arg2,arg3,arg4) '.
+        'VALUES(:c_type, :callfrom, :callto, :pfx, :cpfx)';
 
     $stid = oci_parse($conn, $sql);
 
 //    oci_bind_by_name($stid, ':url', $url_name);
+    oci_bind_by_name($stid, ':type', $c_type);
     oci_bind_by_name($stid, ':callfrom', $callfrom);
     oci_bind_by_name($stid, ':callto', $callto);
+    oci_bind_by_name($stid, ':pfx', $pfx);
+    oci_bind_by_name($stid, ':cpfx', $cpfx);
 //    oci_bind_by_name($mml_cmd, ':mml_cmd', $mml_cmd);
 
 }

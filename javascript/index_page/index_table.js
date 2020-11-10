@@ -192,21 +192,6 @@ $(document).on('click','.actionbutton', function(){
                         var PFX = msg.split(', PFX=')[1].split(',')[0];
                         var CPFX = msg.split(', CPFX=')[1].split(',')[0];
 
-                        // var mySubString = msg.substring(
-                        //     msg.lastIndexOf("ADD CALLPRICHK:") + 1,
-                        //     msg.lastIndexOf(";")
-                        // );
-                        // console.log(mySubString)
-                        // var PFX = mySubString.split('PFX=').pop().split(',')[0]; // returns 'two'
-                        // var CPFX = mySubString.split('CPFX=').pop().split(',')[0]; // returns 'two'
-                        // var PFX = mySubString.substring(
-                        //     mySubString.lastIndexOf("PFX=") + 1,
-                        //     mySubString.lastIndexOf(",")
-                        // );
-                        // var CPFX = mySubString.substring(
-                        //     mySubString.lastIndexOf("CPFX=") + 1,
-                        //     mySubString.lastIndexOf(",")
-                        // );
                         console.log(PFX)
                         console.log(CPFX)
 
@@ -214,7 +199,7 @@ $(document).on('click','.actionbutton', function(){
                             // url: 'controller/index_page/block_insert.php',
                             url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
                             type: "POST",
-                            data: {id:'1', toggle:'action', callfrom: PFX, callto: CPFX },
+                            data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX },
                             dataType: "json",
                             async: false,
                             success: function(data) {
