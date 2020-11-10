@@ -191,7 +191,7 @@ $(document).on('click','.actionbutton', function(){
 
                         var PFX = msg.split(', PFX=')[1].split(',')[0];
                         var CPFX = msg.split(', CPFX=')[1].split(',')[0];
-                        var PCDN = msg.split('PCDN="')[1].split('PCDN="')[0];
+                        var PCDN = msg.split('PCDN="')[1].split('",')[0];
                         var PT = msg.split('PT=')[1].split(',')[0];
 
 
