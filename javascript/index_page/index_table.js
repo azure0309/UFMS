@@ -191,15 +191,20 @@ $(document).on('click','.actionbutton', function(){
 
                         var PFX = msg.split(', PFX=')[1].split(',')[0];
                         var CPFX = msg.split(', CPFX=')[1].split(',')[0];
+                        var PCDN = msg.split('PCDN="')[1].split('PCDN="')[0];
+                        var PT = msg.split('PT=')[1].split(',')[0];
+
 
                         console.log(PFX)
                         console.log(CPFX)
+                        console.log(PCDN)
+                        console.log(PT)
 
                         $.ajax({
                             // url: 'controller/index_page/block_insert.php',
                             url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
                             type: "POST",
-                            data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX },
+                            data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT},
                             dataType: "json",
                             async: false,
                             success: function(data) {

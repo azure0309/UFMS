@@ -8,7 +8,8 @@ $callfrom= $_POST["callfrom"];
 $callto = $_POST["callto"];
 $pfx = $_POST["pfx"];
 $cpfx = $_POST["cpfx"];
-
+$pcdn = $_POST["pcdn"];
+$pt = $_POST["pt"];
 
 
 header('Content-type:application/json');
@@ -28,8 +29,8 @@ if($toggle == 'action'){
 
 //    $sql="insert into od_alert_cmd(type,arg2,arg4) VALUES('".'{callfrom}'."','".'{callto}'."','".'{callto}'."')";
 
-    $sql = 'INSERT INTO od_alert_cmd(type,arg1,arg2,arg3,arg4) '.
-        'VALUES(:c_type, :callfrom, :callto, :pfx, :cpfx)';
+    $sql = 'INSERT INTO od_alert_cmd(type,arg1,arg2,arg3,arg4,arg5,arg6) '.
+        'VALUES(:c_type, :callfrom, :callto, :pfx, :cpfx, :pcdn, :pt)';
 
     $stid = oci_parse($conn, $sql);
 
@@ -39,6 +40,9 @@ if($toggle == 'action'){
     oci_bind_by_name($stid, ':callto', $callto);
     oci_bind_by_name($stid, ':pfx', $pfx);
     oci_bind_by_name($stid, ':cpfx', $cpfx);
+    oci_bind_by_name($stid, ':pcdn', $pcdn);
+    oci_bind_by_name($stid, ':pt', $pt);
+
 //    oci_bind_by_name($mml_cmd, ':mml_cmd', $mml_cmd);
 
 }
