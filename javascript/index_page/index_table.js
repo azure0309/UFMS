@@ -13,6 +13,7 @@ function strToDate(dtStr) {
     let timeParts = dateParts[2].split(" ")[1].split(":");
     dateParts[2] = dateParts[2].split(" ")[0];
     // month is 0-based, that's why we need dataParts[1] - 1
+    // return dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0], timeParts[0], timeParts[1], timeParts[2]);
     return dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0], timeParts[0], timeParts[1], timeParts[2]);
 }
 
@@ -193,7 +194,6 @@ $(document).on('click','.actionbutton', function(){
                         // let dtStr = "12/03/2010 09:55:35"
                         let dtStr = "11-10-2020 08:40:00"
 
-                        // 11-10-2020 08:40:00
 
                         console.log('CREATED DATE: ' + strToDate(dtStr));  // Fri Mar 12 2010 09:55:35
 
@@ -213,7 +213,7 @@ $(document).on('click','.actionbutton', function(){
                             // url: 'controller/index_page/block_insert.php',
                             url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
                             type: "POST",
-                            data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT},
+                            data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8]},
                             dataType: "json",
                             async: false,
                             success: function(data) {

@@ -10,6 +10,8 @@ $pfx = $_POST["pfx"];
 $cpfx = $_POST["cpfx"];
 $pcdn = $_POST["pcdn"];
 $pt = $_POST["pt"];
+$created_date = $_POST["created_date"];
+
 
 
 header('Content-type:application/json');
@@ -29,8 +31,11 @@ if($toggle == 'action'){
 
 //    $sql="insert into od_alert_cmd(type,arg2,arg4) VALUES('".'{callfrom}'."','".'{callto}'."','".'{callto}'."')";
 
-    $sql = 'INSERT INTO od_alert_cmd(type,callfrom,callto,pfx,cpfx,pcdn,pt) '.
-        'VALUES(:c_type, :callfrom, :callto, :pfx, :cpfx, :pcdn, :pt)';
+    $sql = 'INSERT INTO od_alert_cmd(type,callfrom,callto,pfx,cpfx,pcdn,pt,CREATED) '.
+        'VALUES(:c_type, :callfrom, :callto, :pfx, :cpfx, :pcdn, :pt, to_date(:created_date, "DD-MM-YYYY HH24:MI:SS"))';
+
+
+    // 11-10-2020 08:40:00
 
     $stid = oci_parse($conn, $sql);
 
@@ -42,6 +47,7 @@ if($toggle == 'action'){
     oci_bind_by_name($stid, ':cpfx', $cpfx);
     oci_bind_by_name($stid, ':pcdn', $pcdn);
     oci_bind_by_name($stid, ':pt', $pt);
+    oci_bind_by_name($stid, ':created_date', $created_date);
 
 //    oci_bind_by_name($mml_cmd, ':mml_cmd', $mml_cmd);
 
