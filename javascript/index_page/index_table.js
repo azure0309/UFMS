@@ -181,12 +181,12 @@ $(document).on('click','.actionbutton', function(){
                         console.log(msg);
 
                         var PFX = msg.substring(
-                            msg.lastIndexOf("PFX=") + 1,
-                            msg.lastIndexOf(",")
+                            msg.lastIndexOf("CSCNAME=\"ALL\", ") + 1,
+                            msg.lastIndexOf(", CPFX")
                         );
                         var CPFX = msg.substring(
                             msg.lastIndexOf("CPFX=") + 1,
-                            msg.lastIndexOf(",")
+                            msg.lastIndexOf(", PCDN")
                         );
 
                         // var mySubString = msg.substring(
