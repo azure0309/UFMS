@@ -152,7 +152,7 @@ $(document).on('click','.actionbutton', function(){
         // clickedButton.addClass("btn btn-warning");
         // clickedButton.text('BLOCKED');
         console.log("BLOCK BUTTON CLICKED!");
-        console.log("ROW: " + targetRow);
+        // console.log("ROW: " + targetRow);
         console.log("TYPE: " + targetRow[1]);
         // console.log("CALL_FROM: " + targetRow[4]);
         // console.log("CALL_TO: " + call_to);
@@ -189,7 +189,9 @@ $(document).on('click','.actionbutton', function(){
                         var CPFX = msg.split(', CPFX=')[1].split(',')[0];
                         var PCDN = msg.split('PCDN="')[1].split('",')[0];
                         var PT = msg.split('PT=')[1].split(',')[0];
+                        var blocked_date = msg.split('MENAME:MsoftX*/        ')[1].split('+')[0];
 
+                        console.log('bdate: ' + blocked_date)
                         console.log(targetRow[8])
                         console.log(PFX)
                         console.log(CPFX)
