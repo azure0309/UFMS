@@ -212,6 +212,17 @@ $(document).on('click','.actionbutton', function(){
                         }else {
                             console.log(msg)
                             console.log("INSERT CALL TO");
+
+                            console.log(type)
+                            console.log(call_from);
+                            console.log(call_to);
+                            console.log(PFX);
+                            console.log(CPFX);
+                            console.log(PCDN);
+                            console.log(PT);
+                            console.log(targetRow[8]);
+                            console.log(blocked_date);
+
                             $.ajax({
                                 // url: 'controller/index_page/block_insert.php',
                                 url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',

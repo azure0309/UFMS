@@ -22,10 +22,10 @@ $conn = oci_connect('UNI_TRAFFIC', '123456oracle', "(DESCRIPTION =(ADDRESS_LIST 
 	UFMS)))",$db_charset);
 if($toggle == 'action'){
 //    $stid = oci_parse($conn, "UPDATE OD_ALERT SET STATUS = 1 WHERE ALERT_ID = ".$id."");
-//    $stid = oci_parse($conn, "UPDATE OD_ALERT SET STATUS = 1 WHERE ALERT_ID = ".$id."");
 
 //    $sql = 'INSERT INTO od_alert_cmd(type,callfrom,callto,pfx,cpfx,pcdn,pt,CREATED) '.
 //        'VALUES(:c_type, :callfrom, :callto, :pfx, :cpfx, :pcdn, :pt, to_date(:created_date, "DD-MM-YYYY HH24:MI:SS"))';
+
      $sql =    "INSERT INTO od_alert_cmd (type,callfrom,callto,pfx,cpfx,pcdn,pt,CREATED, BLOCKED)
             VALUES (:c_type, :callfrom, :callto, :pfx, :cpfx, :pcdn, :pt, to_date(:created_date, 'DD-MM-YYYY HH24:MI:SS'), to_date(:blocked_date, 'YYYY-MM-DD HH24:MI:SS'))";
 
