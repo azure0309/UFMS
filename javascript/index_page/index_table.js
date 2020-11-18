@@ -227,7 +227,7 @@ $(document).on('click','.actionbutton', function(){
                                 // url: 'controller/index_page/block_insert.php',
                                 url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
                                 type: "POST",
-                                data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8], blocked_date : blocked_date},
+                                data: {id:'0', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8], blocked_date : blocked_date},
                                 dataType: "json",
                                 async: false,
                                 success: function(data) {
@@ -264,19 +264,34 @@ $(document).on('click','.actionbutton', function(){
                             position = msg.indexOf('RETCODE = 0', position + 1);
                         }
                         console.log("COUNT: " + count);
+                        var PFX = msg.split(', PFX=')[1].split(',')[0];
+                        var CPFX = msg.split(', CPFX=')[1].split(',')[0];
+                        var PCDN = msg.split('PCDN="')[1].split('",')[0];
+                        var PT = msg.split('PT=')[1].split(',')[0];
+                        var blocked_date = msg.split('MENAME:MsoftX*/        ')[1].split('+')[0];
                         if(count === 3) {
-                            console.log("TRUE!!!");
-                            var PFX = msg.split(', PFX=')[1].split(',')[0];
-                            var CPFX = msg.split(', CPFX=')[1].split(',')[0];
-                            var PCDN = msg.split('PCDN="')[1].split('",')[0];
-                            var PT = msg.split('PT=')[1].split(',')[0];
-                            var blocked_date = msg.split('MENAME:MsoftX*/        ')[1].split('+')[0];
-
                             $.ajax({
                                 // url: 'controller/index_page/block_insert.php',
                                 url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
                                 type: "POST",
                                 data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8], blocked_date : blocked_date},
+                                dataType: "json",
+                                async: false,
+                                success: function(data) {
+                                    alert("changed");
+                                    console.log("insert changed")
+                                },
+                                cache: false
+                            });
+                            clickedButton.removeClass("btn btn-warning");
+                            clickedButton.addClass("btn btn-info");
+                            clickedButton.text('BLOCKED');
+                        }else {
+                            $.ajax({
+                                // url: 'controller/index_page/block_insert.php',
+                                url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
+                                type: "POST",
+                                data: {id:'0', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8], blocked_date : blocked_date},
                                 dataType: "json",
                                 async: false,
                                 success: function(data) {
