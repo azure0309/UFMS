@@ -197,7 +197,7 @@ $(document).on('click','.actionbutton', function(){
                                 // url: 'controller/index_page/block_insert.php',
                                 url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
                                 type: "POST",
-                                data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8], blocked_date : blocked_date, status : 1},
+                                data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8], blocked_date : blocked_date},
                                 dataType: "json",
                                 async: false,
                                 success: function(data) {
@@ -211,12 +211,12 @@ $(document).on('click','.actionbutton', function(){
                             clickedButton.text('BLOCKED');
                         }else {
                             console.log(msg);
-                            
+                            console.log("CALL TO INSERT")
                             $.ajax({
                                 // url: 'controller/index_page/block_insert.php',
                                 url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
                                 type: "POST",
-                                data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8], blocked_date : blocked_date, status : 0},
+                                data: {id:'0', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8], blocked_date : blocked_date},
                                 dataType: "json",
                                 async: false,
                                 success: function(data) {
@@ -258,7 +258,7 @@ $(document).on('click','.actionbutton', function(){
                                 // url: 'controller/index_page/block_insert.php',
                                 url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
                                 type: "POST",
-                                data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8], blocked_date : blocked_date, status: 1},
+                                data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8], blocked_date : blocked_date},
                                 dataType: "json",
                                 async: false,
                                 success: function(data) {
@@ -276,7 +276,7 @@ $(document).on('click','.actionbutton', function(){
                                 // url: 'controller/index_page/block_insert.php',
                                 url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
                                 type: "POST",
-                                data: {id:'1', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8], blocked_date : blocked_date, status: 0},
+                                data: {id:'0', toggle:'action', c_type: type, callfrom: call_from, callto: call_to, pfx: PFX, cpfx: CPFX, pcdn: PCDN, pt: PT, created_date : targetRow[8], blocked_date : blocked_date},
                                 dataType: "json",
                                 async: false,
                                 success: function(data) {
