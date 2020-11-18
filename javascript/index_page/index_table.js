@@ -211,6 +211,7 @@ $(document).on('click','.actionbutton', function(){
                             clickedButton.text('BLOCKED');
                         }else {
                             console.log(msg);
+                            
                             $.ajax({
                                 // url: 'controller/index_page/block_insert.php',
                                 url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
