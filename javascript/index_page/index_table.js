@@ -191,6 +191,7 @@ $(document).on('click','.actionbutton', function(){
                         var PT = msg.split('PT=')[1].split(',')[0];
                         var blocked_date = msg.split('MENAME:MsoftX*/        ')[1].split('+')[0];
 
+
                         if(count === 3) {
                             $.ajax({
                                 // url: 'controller/index_page/block_insert.php',
@@ -209,6 +210,7 @@ $(document).on('click','.actionbutton', function(){
                             clickedButton.addClass("btn btn-info");
                             clickedButton.text('BLOCKED');
                         }else {
+                            console.log(msg);
                             $.ajax({
                                 // url: 'controller/index_page/block_insert.php',
                                 url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
@@ -251,13 +253,6 @@ $(document).on('click','.actionbutton', function(){
                         }
                         console.log("COUNT: " + count);
                         if(count === 3) {
-                            console.log("TRUE!!!");
-                            var PFX = msg.split(', PFX=')[1].split(',')[0];
-                            var CPFX = msg.split(', CPFX=')[1].split(',')[0];
-                            var PCDN = msg.split('PCDN="')[1].split('",')[0];
-                            var PT = msg.split('PT=')[1].split(',')[0];
-                            var blocked_date = msg.split('MENAME:MsoftX*/        ')[1].split('+')[0];
-
                             $.ajax({
                                 // url: 'controller/index_page/block_insert.php',
                                 url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
@@ -275,12 +270,7 @@ $(document).on('click','.actionbutton', function(){
                             clickedButton.addClass("btn btn-info");
                             clickedButton.text('BLOCKED');
                         } else {
-                            var PFX = msg.split(', PFX=')[1].split(',')[0];
-                            var CPFX = msg.split(', CPFX=')[1].split(',')[0];
-                            var PCDN = msg.split('PCDN="')[1].split('",')[0];
-                            var PT = msg.split('PT=')[1].split(',')[0];
-                            var blocked_date = msg.split('MENAME:MsoftX*/        ')[1].split('+')[0];
-
+                            console.log(msg);
                             $.ajax({
                                 // url: 'controller/index_page/block_insert.php',
                                 url: 'https://ufms.uni/Test/controller/index_page/block_insert.php',
